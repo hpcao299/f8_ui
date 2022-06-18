@@ -1,0 +1,44 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: var(--header-height);
+    background-color: #fff;
+    border-bottom: 1px solid #e8ebed;
+    padding: 0 28px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+}
+
+.logo,
+.body,
+.actions {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.logo {
+    img {
+        border-radius: 6px;
+        height: 38px;
+        width: 38px;
+    }
+}
+
+.logo-heading {
+    color: var(--black-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-left: 16px;
+}
+
+.body {
+    justify-content: center;
+}
+
+.actions {
+    justify-content: flex-end;
+}
