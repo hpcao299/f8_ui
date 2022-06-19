@@ -10,6 +10,7 @@
     z-index: 99;
     display: flex;
     align-items: center;
+    font-size: 1.4rem;
 }
 
 .logo,
@@ -41,4 +42,29 @@
 
 .actions {
     justify-content: flex-end;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.login-btn {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 999px;
+    padding: 7px 20px;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.my-posts {
+    margin-right: 16px;
+    padding: 8px;
+}
+
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 28px;
+    height: 28px;
 }

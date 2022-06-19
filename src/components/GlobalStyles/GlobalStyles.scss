@@ -5,6 +5,7 @@
 
 :root {
     --primary-color: #f05123;
+    --white-color: #fff;
     --black-color: #000;
     --text-color: #333;
 
@@ -30,4 +31,27 @@ body {
     color: var(--text-color);
     text-rendering: optimizeSpeed;
     overflow-y: overlay;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.al-center {
+    align-items: center;
+}
+
+.d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    font-family: inherit;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
 }
