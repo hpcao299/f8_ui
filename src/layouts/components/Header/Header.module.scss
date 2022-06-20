@@ -29,7 +29,7 @@
     }
 }
 
-.logo-heading {
+.logoHeading {
     color: var(--black-color);
     font-size: 1.4rem;
     font-weight: 700;
@@ -46,7 +46,7 @@
     font-weight: 600;
 }
 
-.login-btn {
+.loginBtn {
     background-color: var(--primary-color);
     color: var(--white-color);
     border-radius: 999px;
@@ -57,7 +57,7 @@
     }
 }
 
-.my-posts {
+.myPosts {
     margin-right: 16px;
     padding: 8px;
 }
@@ -67,4 +67,5 @@
     object-fit: cover;
     width: 28px;
     height: 28px;
+    cursor: pointer;
 }

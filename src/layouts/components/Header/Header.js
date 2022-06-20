@@ -12,7 +12,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('logo')}>
                 <img src={images.logo} alt="F8" />
-                <h4 className={cx('logo-heading')}>Học Lập Trình Để Đi Làm</h4>
+                <h4 className={cx('logoHeading')}>Học Lập Trình Để Đi Làm</h4>
             </div>
 
             <div className={cx('body')}>
@@ -22,7 +22,7 @@ function Header() {
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
-                        <Link to="/me/posts" className={cx('my-posts')}>
+                        <Link to="/me/posts" className={cx('myPosts')}>
                             Bài viết của tôi
                         </Link>
                         <img
@@ -32,7 +32,7 @@ function Header() {
                         />
                     </>
                 ) : (
-                    <Link to="/login" className={cx('login-btn')}>
+                    <Link to="/login" className={cx('loginBtn')}>
                         Đăng nhập
                     </Link>
                 )}
