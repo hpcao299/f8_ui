@@ -1,5 +1,7 @@
+import NotDeveloped from '~/components/NotDeveloped';
+
 function HomePage() {
-    return <div>HomePage</div>;
+    return <NotDeveloped />;
 }
 
 export default HomePage;

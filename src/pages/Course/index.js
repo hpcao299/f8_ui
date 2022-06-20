@@ -1,5 +1,7 @@
+import NotDeveloped from '~/components/NotDeveloped';
+
 function CoursePage() {
-    return <div>CoursePage</div>;
+    return <NotDeveloped />;
 }
 
 export default CoursePage;

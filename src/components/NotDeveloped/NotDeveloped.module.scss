@@ -1,0 +1,21 @@
+.wrapper {
+    min-height: calc(100vh - var(--header-height));
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 3.4rem;
+    font-weight: 900;
+    line-height: 1.6;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.message {
+    padding-bottom: 0.4em;
+    text-align: center;
+
+    & + .message {
+        margin-bottom: 28px;
+    }
+}

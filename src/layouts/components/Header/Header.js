@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import images from '~/assets/images';
+import Button from '~/components/Button';
 import UserMenu from '~/components/UserMenu';
 import config from '~/config';
 import Search from '../Search';
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
-const currentUser = true;
+const currentUser = false;
 
 const USER_MENU = [
     {
@@ -62,9 +63,9 @@ function Header() {
                         <UserMenu items={USER_MENU} />
                     </>
                 ) : (
-                    <Link to={config.routes.login} className={cx('loginBtn')}>
+                    <Button to={config.routes.login} primary>
                         Đăng nhập
-                    </Link>
+                    </Button>
                 )}
             </div>
         </header>

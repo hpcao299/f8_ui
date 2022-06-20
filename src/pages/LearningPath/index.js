@@ -1,5 +1,7 @@
+import NotDeveloped from '~/components/NotDeveloped';
+
 function LearningPathPage() {
-    return <div>LearningPathPage</div>;
+    return <NotDeveloped />;
 }
 
 export default LearningPathPage;
