@@ -33,6 +33,11 @@ body {
     overflow-y: overlay;
 }
 
+::selection {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
 .d-flex {
     display: flex;
 }
