@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PenIcon, PlusIcon } from '~/components/Icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import config from '~/config';
 import styles from './CreateButton.module.scss';
 
 const cx = classNames.bind(styles);
@@ -20,7 +21,7 @@ function CreateButton() {
                     <PopperWrapper className={cx('menu')}>
                         <ul className={cx('list')}>
                             <li>
-                                <Link to="/new-post">
+                                <Link to={config.routes.writeBlog}>
                                     <PenIcon />
                                     <span>Viết blog</span>
                                 </Link>
