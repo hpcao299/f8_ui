@@ -7,14 +7,22 @@
 .user {
     display: flex;
     align-items: center;
+
+    img {
+        border-radius: 50%;
+        height: 50px;
+        margin: 10px 0;
+        object-fit: cover;
+        width: 50px;
+    }
 }
 
 .avatar {
     border-radius: 50%;
-    height: 50px;
-    margin: 10px 0;
+    height: 28px;
+    width: 28px;
     object-fit: cover;
-    width: 50px;
+    cursor: pointer;
 }
 
 .info {

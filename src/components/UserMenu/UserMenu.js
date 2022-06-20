@@ -1,35 +1,14 @@
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { animated, easings, useSpring } from 'react-spring';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './UserMenu.module.scss';
 
 const cx = classNames.bind(styles);
 
-function UserMenu({ children, items }) {
-    const initialStyles = { opacity: 0, transform: 'translateY(-8px)' };
-    const [props, setSpring] = useSpring(() => ({
-        config: { duration: 180, easing: easings.ease },
-        ...initialStyles,
-    }));
-
-    const onMount = () => {
-        setSpring({
-            opacity: 1,
-            transform: 'translateY(0)',
-            onRest: () => {},
-        });
-    };
-
-    const onHide = ({ unmount }) => {
-        setSpring({
-            ...initialStyles,
-            onRest: unmount,
-            config: { clamp: true },
-        });
-    };
+function UserMenu({ items }) {
+    const [visible, setVisible] = useState(false);
 
     const renderItems = () => {
         return items.map((item, index) => (
@@ -44,32 +23,34 @@ function UserMenu({ children, items }) {
 
     return (
         <Tippy
-            interactive
-            trigger="click"
-            placement="bottom-end"
-            render={attrs => (
-                <animated.div {...attrs} tabIndex={-1} style={props}>
-                    <PopperWrapper className={cx('wrapper')}>
-                        <div className={cx('user')}>
-                            <img
-                                className={cx('avatar')}
-                                src="https://files.fullstack.edu.vn/f8-prod/user_avatars/85245/6242eb3973495.jpg"
-                                alt="User"
-                            />
-                            <div className={cx('info')}>
-                                <div className={cx('name')}>Nguyen Van A</div>
-                                <div className={cx('username')}>@nguyenvana</div>
-                            </div>
+            content={
+                <PopperWrapper className={cx('wrapper')}>
+                    <div className={cx('user')}>
+                        <img
+                            src="https://files.fullstack.edu.vn/f8-prod/user_avatars/85245/6242eb3973495.jpg"
+                            alt="User"
+                        />
+                        <div className={cx('info')}>
+                            <div className={cx('name')}>Nguyen Van A</div>
+                            <div className={cx('username')}>@nguyenvana</div>
                         </div>
-                        <hr />
-                        <ul className={cx('list')}>{renderItems()}</ul>
-                    </PopperWrapper>
-                </animated.div>
-            )}
-            onMount={onMount}
-            onHide={onHide}
+                    </div>
+                    <hr />
+                    <ul className={cx('list')}>{renderItems()}</ul>
+                </PopperWrapper>
+            }
+            interactive
+            animation="shift-away"
+            placement="bottom-end"
+            visible={visible}
+            onClickOutside={() => setVisible(false)}
         >
-            {children}
+            <img
+                className={cx('avatar')}
+                src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p80x80&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=wQ3lSAWT3t4AX_gM_jD&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9GK_DHDcW9whNIK9UPeOPy935zP7RIYScbSh4Xmk-zDA&oe=62D65578"
+                alt="Avatar"
+                onClick={() => setVisible(!visible)}
+            />
         </Tippy>
     );
 }

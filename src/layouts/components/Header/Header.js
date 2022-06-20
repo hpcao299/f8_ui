@@ -56,13 +56,7 @@ function Header() {
                         <Link to="/me/posts" className={cx('myPosts')}>
                             Bài viết của tôi
                         </Link>
-                        <UserMenu items={USER_MENU}>
-                            <img
-                                className={cx('avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/dd75c7a1936f6217f819a82baa2de432~c5_100x100.jpeg?x-expires=1655794800&x-signature=Dp6dmJHXPM65ZFtmD9N3ms1f%2Fug%3D"
-                                alt="Avatar"
-                            />
-                        </UserMenu>
+                        <UserMenu items={USER_MENU} />
                     </>
                 ) : (
                     <Link to="/login" className={cx('loginBtn')}>
