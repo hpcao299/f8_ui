@@ -1,0 +1,14 @@
+.wrapper {
+    background-color: var(--white-color);
+    padding: 8px 0;
+    border-radius: 10px;
+    color: #1d2129;
+    overflow: hidden;
+    box-shadow: 0 -4px 32px rgb(0 0 0 / 20%);
+
+    hr {
+        border: none;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        margin: 8px 0;
+    }
+}

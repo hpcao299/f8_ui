@@ -1,0 +1,48 @@
+.wrapper {
+    padding: 8px 24px;
+    min-width: 230px;
+    font-weight: 400;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    border-radius: 50%;
+    height: 50px;
+    margin: 10px 0;
+    object-fit: cover;
+    width: 50px;
+}
+
+.info {
+    margin-left: 12px;
+}
+
+.name {
+    color: #292929;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.username {
+    color: #757575;
+    font-size: 1.4rem;
+}
+
+.list {
+    list-style-type: none;
+
+    a {
+        color: #666;
+        display: block;
+        font-size: 1.4rem;
+        padding: 10px 0;
+
+        &:hover {
+            color: #292929;
+        }
+    }
+}
