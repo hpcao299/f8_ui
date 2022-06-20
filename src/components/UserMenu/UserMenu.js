@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 function UserMenu({ children, items }) {
     const initialStyles = { opacity: 0, transform: 'translateY(-8px)' };
     const [props, setSpring] = useSpring(() => ({
-        config: { duration: 300, easing: easings.easeInExpo },
+        config: { duration: 180, easing: easings.ease },
         ...initialStyles,
     }));
 

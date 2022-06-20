@@ -47,6 +47,12 @@ body {
     align-items: center;
 }
 
+input,
+button {
+    border: none;
+    outline: none;
+}
+
 input {
     font-family: inherit;
 }
@@ -54,4 +60,17 @@ input {
 a {
     color: var(--text-color);
     text-decoration: none;
+}
+
+.svg-inline--fa {
+    display: var(--fa-display, inline-block);
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+}
+
+svg:not(:root).svg-inline--fa,
+svg:not(:host).svg-inline--fa {
+    overflow: visible;
+    box-sizing: content-box;
 }
