@@ -43,7 +43,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('logo')}>
-                <img src={images.logo} alt="F8" />
+                <Link to={config.routes.home}>
+                    <img src={images.logo} alt="F8" />
+                </Link>
                 <h4 className={cx('logoHeading')}>Học Lập Trình Để Đi Làm</h4>
             </div>
 

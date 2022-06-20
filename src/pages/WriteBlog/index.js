@@ -1,1 +1,5 @@
-export { default } from './WriteBlog';
+function WriteBlogPage() {
+    return <div>WriteBlogPage</div>;
+}
+
+export default WriteBlogPage;
