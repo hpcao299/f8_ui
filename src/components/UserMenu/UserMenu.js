@@ -1,5 +1,6 @@
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -54,5 +55,15 @@ function UserMenu({ items }) {
         </Tippy>
     );
 }
+
+UserMenu.propTypes = {
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            to: PropTypes.string,
+            title: PropTypes.string.isRequired,
+            separate: PropTypes.bool,
+        }),
+    ),
+};
 
 export default UserMenu;
