@@ -8,7 +8,7 @@ import Search from '../Search';
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
-const currentUser = false;
+const currentUser = true;
 
 const USER_MENU = [
     {
