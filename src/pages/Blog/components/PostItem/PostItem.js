@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import Image from '~/components/Image';
 import styles from './PostItem.module.scss';
 
 const cx = classNames.bind(styles);
@@ -10,7 +11,8 @@ function PostItem() {
             <div className={cx('header')}>
                 <div className={cx('author')}>
                     <Link to="/@nguyenvana">
-                        <img
+                        <Image
+                            isAvatar
                             src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/4c4a2a65313ace90d091da8320e66cb2~c5_100x100.jpeg?x-expires=1655974800&x-signature=NFBKtta2htPPptuIMA0YD710mD0%3D"
                             alt="Avatar"
                         />
