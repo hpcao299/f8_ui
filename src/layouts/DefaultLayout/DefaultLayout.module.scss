@@ -1,6 +1,14 @@
-.content {
+.withSidebar {
+    flex-shrink: 0;
+}
+
+.withSidebarContent {
     flex: 1;
-    max-width: calc(100% - 96px);
+    max-width: calc(100% - var(--sidebar-width));
+    padding: 0 40px 0 20px;
+}
+
+.content {
     margin-bottom: 60px;
-    padding: 8px 84px 0 20px;
+    padding: 8px 44px 0;
 }

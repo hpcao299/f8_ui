@@ -20,6 +20,7 @@ const publicRoutes = [
     { path: config.routes.courses, component: CoursePage },
 
     { path: config.routes.blog, component: Blog },
+    { path: config.routes.blogTopics, component: Blog },
     { path: config.routes.writeBlog, component: WriteBlogPage, layout: HeaderOnly },
 
     { path: config.routes.profile, component: ProfilePage },
