@@ -81,3 +81,35 @@ svg:not(:host).svg-inline--fa {
     overflow: visible;
     box-sizing: content-box;
 }
+
+// MD editor
+.w-md-editor-toolbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: var(--header-height);
+    height: 35px !important;
+    z-index: 1;
+}
+
+.w-md-editor-fullscreen .w-md-editor-toolbar {
+    top: 0;
+}
+
+.w-md-editor-toolbar button {
+    margin: 0 3px !important;
+    padding: 5px !important;
+}
+
+.w-md-editor-toolbar svg {
+    width: 16px;
+    height: 16px;
+}
+
+.w-md-editor-preview {
+    height: calc(100% - 6px);
+}
+
+.w-md-editor-text-input::selection {
+    background-color: var(--primary-color) !important;
+    color: #fff !important;
+}

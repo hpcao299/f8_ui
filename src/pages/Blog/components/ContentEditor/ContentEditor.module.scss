@@ -1,0 +1,16 @@
+.title {
+    color: rgb(41, 41, 41);
+    font-size: 3.2rem;
+    font-weight: 500;
+    min-height: 48px;
+    width: 100%;
+    line-height: 1.4;
+}
+
+.title::placeholder {
+    color: rgb(179, 179, 177);
+}
+
+.editor {
+    margin-top: 16px;
+}
