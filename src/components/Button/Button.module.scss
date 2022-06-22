@@ -6,6 +6,7 @@
     color: var(--primary-color);
     font-size: 1.4rem;
     font-weight: 600;
+    font-family: var(--font-family);
     padding: 6px 20px;
     transition: 0.3s ease;
     -webkit-user-select: none;
@@ -25,5 +26,10 @@
     &:hover {
         cursor: pointer;
         opacity: 0.9;
+    }
+
+    &.disabled {
+        opacity: 0.5 !important;
+        pointer-events: none !important;
     }
 }

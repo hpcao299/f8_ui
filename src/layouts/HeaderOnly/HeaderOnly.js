@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import Container from '~/layouts/components/Container';
 import Header from '../components/Header';
-function HeaderOnly({ children }) {
+function HeaderOnly({ children, ...props }) {
     return (
         <div>
-            <Header />
+            <Header {...props} />
             <Container>{children}</Container>
         </div>
     );

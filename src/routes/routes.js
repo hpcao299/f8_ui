@@ -21,7 +21,15 @@ const publicRoutes = [
 
     { path: config.routes.blog, component: Blog },
     { path: config.routes.blogTopics, component: Blog },
-    { path: config.routes.writeBlog, component: WriteBlogPage, layout: HeaderOnly },
+    {
+        path: config.routes.writeBlog,
+        component: WriteBlogPage,
+        layout: HeaderOnly,
+        props: {
+            hideSearch: true,
+            showPublishBtn: true,
+        },
+    },
 
     { path: config.routes.profile, component: ProfilePage },
     { path: config.routes.myPost, component: MyPostPage },

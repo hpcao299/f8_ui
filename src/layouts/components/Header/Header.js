@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import images from '~/assets/images';
 import Button from '~/components/Button';
@@ -41,7 +42,7 @@ const USER_MENU = [
     },
 ];
 
-function Header() {
+function Header({ hideSearch = false, showPublishBtn = false }) {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('logo')}>
@@ -51,13 +52,25 @@ function Header() {
                 <h4 className={cx('logoHeading')}>Học Lập Trình Để Đi Làm</h4>
             </div>
 
-            <div className={cx('body')}>
-                <Search />
-            </div>
+            {!hideSearch && (
+                <div className={cx('body')}>
+                    <Search />
+                </div>
+            )}
 
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
+                        {showPublishBtn && (
+                            <Button
+                                className={cx('publishBtn')}
+                                onClick={() => console.log('click')}
+                                primary
+                                disabled
+                            >
+                                Xuất bản
+                            </Button>
+                        )}
                         <Link to={config.routes.myPost} className={cx('myPosts')}>
                             Bài viết của tôi
                         </Link>
@@ -72,5 +85,10 @@ function Header() {
         </header>
     );
 }
+
+Header.propTypes = {
+    hideSearch: PropTypes.bool,
+    showPublishBtn: PropTypes.bool,
+};
 
 export default Header;

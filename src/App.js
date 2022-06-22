@@ -21,7 +21,7 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                    <Layout>
+                                    <Layout {...route.props}>
                                         <Page />
                                     </Layout>
                                 }
