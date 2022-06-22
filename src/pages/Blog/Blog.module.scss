@@ -26,6 +26,15 @@
     padding: 0 64px 44px 0;
 }
 
+.msg {
+    padding: 16px 0;
+
+    a {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}
+
 .rightLayout {
     height: 100%;
 }

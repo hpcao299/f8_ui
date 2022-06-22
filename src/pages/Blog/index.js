@@ -1,5 +1,8 @@
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
+import { Link } from 'react-router-dom';
+import config from '~/config';
 import styles from './Blog.module.scss';
 import PostItem from './components/PostItem';
 import TopicsList from './components/TopicsList';
@@ -7,6 +10,16 @@ import TopicsList from './components/TopicsList';
 const cx = classNames.bind(styles);
 
 function BlogPage() {
+    const [blogsList, setBlogsList] = useState([]);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setBlogsList([1, 2, 3, 4, 5]);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <>
             <div className={cx('top')}>
@@ -21,9 +34,14 @@ function BlogPage() {
                     <Row gutterWidth={24}>
                         <Col xl={8} sm={12}>
                             <div className={cx('leftLayout')}>
-                                {[1, 2, 3, 4, 5].map(x => (
-                                    <PostItem key={x} />
-                                ))}
+                                {blogsList.length > 0 ? (
+                                    blogsList.map(x => <PostItem key={x} />)
+                                ) : (
+                                    <p className={cx('msg')}>
+                                        Chưa có bài viết nào. Hãy là người{' '}
+                                        <Link to={config.routes.writeBlog}>viết bài đầu tiên</Link>
+                                    </p>
+                                )}
                             </div>
                         </Col>
                         <Col xl={4} sm={12}>
