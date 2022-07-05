@@ -2,10 +2,10 @@ import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { Link } from 'react-router-dom';
+import TopicsList from '~/components/TopicsList';
 import config from '~/config';
 import styles from './Blog.module.scss';
 import PostItem from './components/PostItem';
-import TopicsList from './components/TopicsList';
 
 const cx = classNames.bind(styles);
 

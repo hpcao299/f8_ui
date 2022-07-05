@@ -1,0 +1,30 @@
+.wrapper {
+    color: rgb(117, 117, 117);
+    display: flex;
+    font-size: 1.6rem;
+    margin-top: 24px;
+}
+
+.btn {
+    padding: 4px 8px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        color: rgb(51, 51, 51);
+        cursor: pointer;
+    }
+
+    & + .btn {
+        margin-left: 24px;
+    }
+
+    span {
+        margin-left: 8px;
+    }
+
+    svg {
+        font-size: 2rem;
+    }
+}

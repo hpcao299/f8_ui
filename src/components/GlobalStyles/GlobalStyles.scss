@@ -113,3 +113,16 @@ svg:not(:host).svg-inline--fa {
 .w-md-editor-preview {
     height: calc(100% - 6px);
 }
+
+.wmde-markdown.wmde-markdown-color {
+    --font-size: 1.8rem;
+    --line-height: 2;
+
+    word-wrap: break-word;
+    color: #292929;
+    font-size: 1.8rem;
+    font-size: var(--font-size, 1.8rem);
+    line-height: 2;
+    line-height: var(--line-height, 2);
+    background-color: transparent;
+}

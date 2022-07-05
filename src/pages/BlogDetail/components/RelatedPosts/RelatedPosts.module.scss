@@ -1,0 +1,55 @@
+.wrapper {
+    border-top: 3px solid var(--primary-color);
+    margin-top: 100px;
+    padding-top: 32px;
+    margin-bottom: 40px;
+}
+
+.heading {
+    font-size: 3.2rem;
+    margin: 26px 0;
+    font-weight: 600;
+}
+
+.post {
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    font-size: 1.6rem;
+    margin-top: 48px;
+}
+
+.info {
+    font-size: 1.5rem;
+}
+
+.full-name {
+    color: var(--text-color);
+}
+
+.dot {
+    color: rgb(117, 117, 117);
+    font-weight: 500;
+    padding: 0px 8px;
+}
+
+.time {
+    color: rgb(117, 117, 117);
+}
+
+.title {
+    color: rgb(41, 41, 41);
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin: 12px 0 4px;
+}
+
+.photo {
+    border-radius: 16px;
+    display: block;
+    height: 320px;
+    margin-bottom: 16px;
+    margin-top: 24px;
+    object-fit: cover;
+    overflow: hidden;
+    width: 100%;
+}

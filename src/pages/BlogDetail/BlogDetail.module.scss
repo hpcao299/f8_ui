@@ -1,0 +1,102 @@
+.wrapper {
+    padding: 0px 44px 60px;
+    line-height: 1.6;
+    height: 100%;
+}
+
+.aside {
+    position: sticky;
+    top: 116px;
+}
+
+.username {
+    color: rgb(41, 41, 41);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.divider {
+    background-color: rgb(230, 230, 230);
+    border: none;
+    height: 1px;
+    margin: 6px 0;
+}
+
+.content {
+    padding-left: 40px;
+}
+
+.heading {
+    margin: 26px 0;
+    color: rgb(34, 34, 34);
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 28px;
+}
+
+.user {
+    display: flex;
+}
+
+.actions {
+    color: rgb(117, 117, 117);
+    display: flex;
+    margin-right: -8px;
+    user-select: none;
+
+    button {
+        font-size: 1.6rem;
+        padding: 4px 8px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: rgb(117, 117, 117);
+        pointer-events: none;
+        opacity: 0.6;
+    }
+}
+
+.avatar {
+    display: flex;
+
+    img {
+        border-radius: 50%;
+        height: 48px;
+        width: 48px;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.4rem;
+    justify-content: center;
+    margin-left: 12px;
+}
+
+.name {
+    color: rgb(41, 41, 41);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.time {
+    color: rgb(117, 117, 117);
+}
+
+.dot {
+    color: rgb(117, 117, 117);
+    font-weight: 500;
+    padding: 0px 4px;
+}
+
+.body-bottom {
+    margin-top: 60px;
+}
