@@ -15,6 +15,9 @@ function Button({
     text = false,
     disabled = false,
     rounded = false,
+    fieldButton = false,
+    fieldButtonSave = false,
+    fieldButtonDefault = false,
 
     size,
 
@@ -51,6 +54,9 @@ function Button({
         large: size === 'large',
         disabled,
         rounded,
+        fieldButton: fieldButtonDefault || fieldButtonSave,
+        fieldButtonSave,
+        fieldButtonDefault,
         [className]: className,
     });
 
@@ -71,6 +77,9 @@ Button.propTypes = {
     text: PropTypes.bool,
     disabled: PropTypes.bool,
     rounded: PropTypes.bool,
+    fieldButton: PropTypes.bool,
+    fieldButtonSave: PropTypes.bool,
+    fieldButtonDefault: PropTypes.bool,
 
     size: PropTypes.oneOf(['small', 'large']),
 

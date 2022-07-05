@@ -1,0 +1,63 @@
+.content {
+    flex: 1 1;
+}
+
+.content-label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.content-edit {
+    display: flex;
+    margin-top: 16px;
+}
+
+.content-body {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    max-width: 500px;
+}
+
+.content-image {
+    margin-left: 100px;
+    overflow: hidden;
+}
+
+.avatar-wrapper {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.avatar {
+    object-fit: cover;
+    width: 100%;
+    height: 80px;
+}
+
+.choose-avatar {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+    z-index: 5;
+    border-radius: 50%;
+
+    svg {
+        color: #fff;
+        font-size: 3.6rem;
+        opacity: 0.5;
+        width: 75%;
+    }
+
+    &:hover svg {
+        opacity: 1;
+    }
+}

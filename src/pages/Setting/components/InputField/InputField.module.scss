@@ -1,0 +1,39 @@
+.content {
+    flex: 1 1;
+    margin-right: 10px;
+}
+
+.content-label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.content-edit {
+    margin-top: 12px;
+    max-width: 500px;
+}
+
+.input {
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.84);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    outline: none;
+    padding-bottom: 8px;
+    width: 100%;
+
+    &::placeholder {
+        color: #e3e3e3;
+    }
+}
+
+.description {
+    color: #757575;
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 2rem;
+    margin: 12px 0;
+}
