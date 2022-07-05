@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { FaCamera } from 'react-icons/fa';
+import Image from '~/components/Image';
 import FieldButtons from '../FieldButtons';
 import styles from './PhotoField.module.scss';
 
@@ -29,11 +30,12 @@ function PhotoField({ data, isEditable }) {
                         <input type="file" accept="image/*" id="avatar" hidden />
 
                         <div className={cx('avatar-wrapper')}>
-                            <img
+                            <Image
                                 src={data.value}
-                                alt=""
+                                alt="example name"
                                 className={cx('avatar')}
                                 onClick={() => setIsEdit(true)}
+                                isAvatar
                             />
 
                             <label

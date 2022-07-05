@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-grid-system';
 import { Link } from 'react-router-dom';
 import images from '~/assets/images';
 import { FacebookIcon, TikTokIcon, YoutubeIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 import styles from './Footer.module.scss';
 
 const cx = classNames.bind(styles);
@@ -17,7 +18,7 @@ function Footer() {
                             <div>
                                 <div className={cx('logo')}>
                                     <Link to="/blog">
-                                        <img src={images.logo} alt="F8 Logo" />
+                                        <Image src={images.logo} alt="F8 Logo" />
                                     </Link>
                                     <h4 className={cx('logo-heading')}>Học Lập Trình Để Đi Làm</h4>
                                 </div>
@@ -42,7 +43,7 @@ function Footer() {
                                             title="DMCA Protected"
                                             href="https://www.dmca.com/Protection/Status.aspx?id=1b325c69-aeb7-4e32-8784-a0009613323a&refurl=https%3a%2f%2ffullstack.edu.vn%2f&rlo=true"
                                         >
-                                            <img
+                                            <Image
                                                 className={cx('dmca')}
                                                 src={images.dmca}
                                                 alt="DMCA Protected"

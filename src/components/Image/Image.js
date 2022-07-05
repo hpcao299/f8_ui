@@ -10,7 +10,7 @@ const Image = forwardRef(
             src,
             alt,
             className,
-            fallback: customFallback = images.noImage,
+            fallback: customFallback = images.fallbackImage,
             isAvatar = false,
             ...props
         },
@@ -20,7 +20,7 @@ const Image = forwardRef(
 
         const handleError = () => {
             if (isAvatar) {
-                setFallback(images.noAvatar);
+                setFallback(images.fallbackAvatar);
             } else {
                 setFallback(customFallback);
             }

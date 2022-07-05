@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import images from '~/assets/images';
+import Image from '~/components/Image';
 import SigninButtons from './components/SigninButtons';
 import styles from './Signin.module.scss';
 
@@ -18,7 +19,7 @@ function SigninPage() {
                 <div className={cx('content')}>
                     <div className={cx('header')}>
                         <Link to="/blog">
-                            <img src={images.logo} alt="F8 Logo" className={cx('logo')} />
+                            <Image src={images.logo} alt="F8 Logo" className={cx('logo')} />
                         </Link>
                         <h1 className={cx('title')}>Đăng nhập vào F8</h1>
                     </div>

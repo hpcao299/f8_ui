@@ -1,7 +1,7 @@
 const images = {
     logo: require('~/assets/images/logo.png'),
-    noImage: require('~/assets/images/no-image.png'),
-    noAvatar: require('~/assets/images/no-avatar.png'),
+    fallbackImage: require('~/assets/images/fallback-image.png'),
+    fallbackAvatar: require('~/assets/images/fallback-avatar.jpg'),
     bgAuth: require('~/assets/images/f8-bg-auth.png'),
     dmca: require('~/assets/images/dmca.png'),
     personal: require('~/assets/images/personal-18px.svg').default,
