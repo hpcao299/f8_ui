@@ -38,7 +38,7 @@ const USER_MENU = [
     },
     {
         title: 'Đăng xuất',
-        to: config.routes.login,
+        to: config.routes.signin,
     },
 ];
 
@@ -77,7 +77,7 @@ function Header({ hideSearch = false, showPublishBtn = false }) {
                         <UserMenu items={USER_MENU} />
                     </>
                 ) : (
-                    <Button to={config.routes.login} primary>
+                    <Button to={config.routes.signin} primary>
                         Đăng nhập
                     </Button>
                 )}

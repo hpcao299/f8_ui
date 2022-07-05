@@ -1,17 +1,17 @@
 import config from '~/config';
 
 // Layouts
-import { HeaderOnly } from '~/layouts';
+import { HeaderOnly, NoNav } from '~/layouts';
 
 // Pages
 import Blog from '~/pages/Blog';
 import CoursePage from '~/pages/Course';
 import HomePage from '~/pages/Home';
 import LearningPathPage from '~/pages/LearningPath';
-import LoginPage from '~/pages/Login';
 import MyPostPage from '~/pages/MyPost';
 import ProfilePage from '~/pages/Profile';
 import SettingPage from '~/pages/Setting';
+import SigninPage from '~/pages/Signin';
 import WriteBlogPage from '~/pages/WriteBlog';
 
 const publicRoutes = [
@@ -35,7 +35,7 @@ const publicRoutes = [
     { path: config.routes.myPost, component: MyPostPage },
     { path: config.routes.settings, component: SettingPage, layout: HeaderOnly },
 
-    { path: config.routes.login, component: LoginPage },
+    { path: config.routes.signin, component: SigninPage, layout: NoNav },
 ];
 
 const privateRoutes = [];

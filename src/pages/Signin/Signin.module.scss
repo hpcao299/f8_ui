@@ -1,0 +1,74 @@
+$bg-auth-img: url('/src/assets/images/f8-bg-auth.png');
+
+.signin {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    background-size: cover;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.content {
+    --width: 640px;
+    background: #fff;
+    border-radius: 8px;
+    max-width: calc(100vw - 32px);
+    padding: 48px 16px;
+    min-height: 600px;
+    position: relative;
+    width: var(--width);
+    box-sizing: border-box;
+}
+
+.header {
+}
+
+.logo {
+    border-radius: 8px;
+    height: 44px;
+    object-fit: cover;
+    width: 44px;
+}
+
+.title {
+    color: #292929;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+.step {
+    margin-top: 24px;
+}
+
+.about {
+    line-height: 1.8;
+    margin-top: 12px;
+
+    a,
+    span {
+        color: #fff;
+        font-size: 1.4rem;
+    }
+
+    span {
+        margin: 0 8px;
+    }
+}

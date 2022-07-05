@@ -11,7 +11,7 @@ const routes = {
     myPost: '/me/posts',
     settings: '/settings',
 
-    login: '/login',
+    signin: '/a/signin',
 };
 
 export default routes;
