@@ -5,6 +5,7 @@ const routes = {
 
     blog: '/blog',
     blogTopics: '/blog/topic/:topic',
+    blogDetails: '/blog/:slug',
     writeBlog: '/new-post',
 
     profile: '/@:username',

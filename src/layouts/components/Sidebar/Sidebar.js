@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CreateButton from '~/components/CreateButton';
 import { HomeIcon, LightBulbIcon, NewspaperIcon, RoadIcon } from '~/components/Icons';
@@ -7,9 +8,9 @@ import styles from './Sidebar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Sidebar() {
+function Sidebar({ interactive, className }) {
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', { [className]: interactive })}>
             <CreateButton />
             <ul className={cx('list')}>
                 <li>
@@ -40,5 +41,10 @@ function Sidebar() {
         </div>
     );
 }
+
+Sidebar.propTypes = {
+    interactive: PropTypes.bool,
+    className: PropTypes.string,
+};
 
 export default Sidebar;
