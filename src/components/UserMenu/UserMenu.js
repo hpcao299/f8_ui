@@ -16,7 +16,14 @@ function UserMenu({ items }) {
         return items.map((item, index) => (
             <Fragment key={index}>
                 <li>
-                    <Link to={item.to}>{item.title}</Link>
+                    <Link
+                        to={item.to}
+                        className={cx({
+                            disabled: item.disabled,
+                        })}
+                    >
+                        {item.title}
+                    </Link>
                 </li>
                 {item.separate && <hr />}
             </Fragment>

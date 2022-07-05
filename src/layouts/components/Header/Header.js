@@ -31,6 +31,7 @@ const USER_MENU = [
         title: 'Bài viết đã lưu',
         to: config.routes.myPost,
         separate: true,
+        disabled: true,
     },
     {
         title: 'Cài đặt',
