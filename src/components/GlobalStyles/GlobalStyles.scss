@@ -35,7 +35,7 @@ body {
     overscroll-behavior: none;
 }
 
-::selection {
+:not(.w-md-editor-text-input)::selection {
     background-color: var(--primary-color);
     color: #fff;
 }
@@ -107,9 +107,4 @@ svg:not(:host).svg-inline--fa {
 
 .w-md-editor-preview {
     height: calc(100% - 6px);
-}
-
-.w-md-editor-text-input::selection {
-    background-color: var(--primary-color) !important;
-    color: #fff !important;
 }

@@ -1,5 +1,6 @@
 import MDEditor from '@uiw/react-md-editor';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styles from './ContentEditor.module.scss';
 
@@ -29,5 +30,10 @@ function ContentEditor({ title: titleProp = '', value: valueProp = '' }) {
         </>
     );
 }
+
+ContentEditor.propTypes = {
+    title: PropTypes.string,
+    value: PropTypes.string,
+};
 
 export default ContentEditor;
