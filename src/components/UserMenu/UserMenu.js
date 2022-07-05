@@ -21,6 +21,7 @@ function UserMenu({ items }) {
                         className={cx({
                             disabled: item.disabled,
                         })}
+                        onClick={() => setVisible(false)}
                     >
                         {item.title}
                     </Link>
