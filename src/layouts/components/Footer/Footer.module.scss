@@ -1,0 +1,112 @@
+.wrapper {
+    background-color: #181821;
+    color: #a9b3bb;
+    overflow: hidden;
+    padding: 68px 0 40px;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+}
+
+.heading {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.6;
+    text-transform: uppercase;
+    margin: 14px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    a {
+        display: flex;
+    }
+
+    img {
+        border-radius: 8px;
+        height: 38px;
+        margin-right: 10px;
+        width: 38px;
+    }
+}
+
+.logo-heading {
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.list {
+    padding-left: 0;
+    margin: 12px 0;
+
+    li {
+        list-style-type: none;
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    li:last-child {
+        margin-bottom: 2px;
+    }
+
+    a {
+        color: #a9b3bb;
+        cursor: pointer;
+        position: relative;
+        transition: 0.3s ease;
+    }
+
+    a:hover {
+        color: #fff;
+    }
+}
+
+.dmca {
+    margin-top: 20px;
+}
+
+.bottom {
+    width: 100%;
+    margin-top: 48px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 1.4rem;
+}
+
+.social-list {
+    margin-left: auto;
+    font-size: 2.8rem;
+}
+
+.social-item {
+    margin-left: 12px;
+    font-size: 3.2rem;
+
+    &.youtube-icon {
+        color: #eb2c3b;
+    }
+
+    &.facebook-icon {
+        color: #4867aa;
+    }
+
+    &.tiktok-icon {
+        color: #ccc;
+    }
+}
+
+.space {
+    height: 98px;
+}
