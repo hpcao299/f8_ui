@@ -8,6 +8,7 @@ const images = {
     google: require('~/assets/images/google-18px.svg').default,
     facebook: require('~/assets/images/facebook-18px.svg').default,
     github: require('~/assets/images/github-18px.svg').default,
+    coverProfile: require('~/assets/images/cover-profile.png'),
 };
 
 export default images;
