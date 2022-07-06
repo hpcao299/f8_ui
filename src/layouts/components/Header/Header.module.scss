@@ -11,6 +11,11 @@
     display: flex;
     align-items: center;
     font-size: 1.4rem;
+
+    &.transparent {
+        border-bottom: none;
+        background: transparent;
+    }
 }
 
 .logo,
@@ -62,7 +67,7 @@
     color: var(--black-color);
     font-size: 1.4rem;
     font-weight: 700;
-    margin-left: 16px;
+    margin-left: 14px;
 }
 
 .body {

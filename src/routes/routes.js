@@ -1,7 +1,7 @@
 import config from '~/config';
 
 // Layouts
-import { HeaderOnly, MovableSidebar, NoNav } from '~/layouts';
+import { HeaderOnly, MovableSidebar, NoNav, TransparentHeader } from '~/layouts';
 
 // Pages
 import Blog from '~/pages/Blog';
@@ -33,7 +33,7 @@ const publicRoutes = [
         },
     },
 
-    { path: config.routes.profile, component: ProfilePage, layout: MovableSidebar },
+    { path: config.routes.profile, component: ProfilePage, layout: TransparentHeader },
     { path: config.routes.myPost, component: MyPostPage },
     { path: config.routes.settings, component: SettingPage, layout: HeaderOnly },
 

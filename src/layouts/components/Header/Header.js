@@ -7,6 +7,7 @@ import config from '~/config';
 import Search from '../Search';
 import styles from './Header.module.scss';
 import Logo from './Logo';
+import PublishBtn from './PublishBtn';
 
 const cx = classNames.bind(styles);
 const currentUser = true;
@@ -42,9 +43,13 @@ const USER_MENU = [
     },
 ];
 
-function Header({ hideSearch = false, showPublishBtn = false }) {
+function Header({ hideSearch = false, showPublishBtn = false, transparent = false }) {
+    if (transparent) {
+        hideSearch = true;
+    }
+
     return (
-        <header className={cx('wrapper')}>
+        <header className={cx('wrapper', { transparent })}>
             <Logo />
 
             {!hideSearch && (
@@ -56,19 +61,12 @@ function Header({ hideSearch = false, showPublishBtn = false }) {
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
-                        {showPublishBtn && (
-                            <Button
-                                className={cx('publishBtn')}
-                                onClick={() => console.log('click')}
-                                primary
-                                disabled
-                            >
-                                Xuất bản
-                            </Button>
+                        {showPublishBtn && <PublishBtn />}
+                        {!transparent && (
+                            <Link to={config.routes.myPost} className={cx('myPosts')}>
+                                Bài viết của tôi
+                            </Link>
                         )}
-                        <Link to={config.routes.myPost} className={cx('myPosts')}>
-                            Bài viết của tôi
-                        </Link>
                         <UserMenu items={USER_MENU} />
                     </>
                 ) : (
@@ -84,6 +82,7 @@ function Header({ hideSearch = false, showPublishBtn = false }) {
 Header.propTypes = {
     hideSearch: PropTypes.bool,
     showPublishBtn: PropTypes.bool,
+    transparent: PropTypes.bool,
 };
 
 export default Header;
