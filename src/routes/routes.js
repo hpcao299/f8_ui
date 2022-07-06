@@ -1,7 +1,7 @@
 import config from '~/config';
 
 // Layouts
-import { HeaderOnly, InteractiveSidebar, NoNav } from '~/layouts';
+import { HeaderOnly, MovableSidebar, NoNav } from '~/layouts';
 
 // Pages
 import Blog from '~/pages/Blog';
@@ -22,7 +22,7 @@ const publicRoutes = [
 
     { path: config.routes.blog, component: Blog },
     { path: config.routes.blogTopics, component: Blog },
-    { path: config.routes.blogDetails, component: BlogDetail, layout: InteractiveSidebar },
+    { path: config.routes.blogDetails, component: BlogDetail, layout: MovableSidebar },
     {
         path: config.routes.writeBlog,
         component: WriteBlogPage,
@@ -33,7 +33,7 @@ const publicRoutes = [
         },
     },
 
-    { path: config.routes.profile, component: ProfilePage, layout: InteractiveSidebar },
+    { path: config.routes.profile, component: ProfilePage, layout: MovableSidebar },
     { path: config.routes.myPost, component: MyPostPage },
     { path: config.routes.settings, component: SettingPage, layout: HeaderOnly },
 
