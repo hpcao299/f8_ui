@@ -87,6 +87,29 @@ svg:not(:host).svg-inline--fa {
     box-sizing: content-box;
 }
 
+// Selection
+@media (min-width: 1024px) {
+    html::-webkit-scrollbar {
+        border-radius: 0;
+        height: 8px;
+        width: 8px;
+    }
+}
+
+@media (min-width: 1024px) {
+    html::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+    }
+}
+
+@media (min-width: 1024px) {
+    html::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius: 0;
+    }
+}
+
 // MD editor
 .w-md-editor-toolbar {
     position: sticky;
