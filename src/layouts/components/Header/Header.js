@@ -51,7 +51,7 @@ function Header({ hideSearch = false, showPublishBtn = false, transparent = fals
         },
         {
             title: 'Đăng xuất',
-            to: '/logout',
+            to: config.routes.logout,
             onClick: handleLogout,
         },
     ];

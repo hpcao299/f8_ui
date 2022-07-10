@@ -13,6 +13,7 @@ const routes = {
     settings: '/settings',
 
     signin: '/a/signin',
+    logout: '/a/logout',
 };
 
 export default routes;

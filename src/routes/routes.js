@@ -9,6 +9,7 @@ import BlogDetail from '~/pages/BlogDetail';
 import CoursePage from '~/pages/Course';
 import HomePage from '~/pages/Home';
 import LearningPathPage from '~/pages/LearningPath';
+import LogoutPage from '~/pages/Logout';
 import MyPostPage from '~/pages/MyPost';
 import ProfilePage from '~/pages/Profile';
 import SettingPage from '~/pages/Setting';
@@ -27,6 +28,7 @@ const publicRoutes = [
     { path: config.routes.profile, component: ProfilePage, layout: TransparentHeader },
 
     { path: config.routes.signin, component: SigninPage, layout: NoNav },
+    { path: config.routes.logout, component: LogoutPage, layout: NoNav },
 ];
 
 const privateRoutes = [

@@ -1,15 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import config from '~/config';
 
-function MyPostPage() {
+function LogoutPage() {
     return (
         <div>
             <Helmet>
-                <title>{config.titles.myPost}</title>
+                <title>{config.titles.logout}</title>
             </Helmet>
-            MyPostPage
         </div>
     );
 }
 
-export default MyPostPage;
+export default LogoutPage;

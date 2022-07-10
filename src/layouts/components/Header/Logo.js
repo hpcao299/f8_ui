@@ -19,7 +19,7 @@ function Logo() {
 
     return (
         <div className={cx('logo')}>
-            <Link to={config.routes.home}>
+            <Link to={config.routes.blog}>
                 <Image src={images.logo} alt="F8" />
             </Link>
             {pathname === '/blog' ? (

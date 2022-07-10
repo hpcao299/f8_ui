@@ -1,7 +1,9 @@
 import classNames from 'classnames/bind';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+
 import images from '~/assets/images';
 import Image from '~/components/Image';
 import config from '~/config';
@@ -25,10 +27,14 @@ function SigninPage() {
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${images.bgAuth})`,
             }}
         >
+            <Helmet>
+                <title>{config.titles.signin}</title>
+            </Helmet>
+
             <div className={cx('container')}>
                 <div className={cx('content')}>
                     <div className={cx('header')}>
-                        <Link to="/blog">
+                        <Link to={config.routes.blog}>
                             <Image src={images.logo} alt="F8 Logo" className={cx('logo')} />
                         </Link>
                         <h1 className={cx('title')}>Đăng nhập vào F8</h1>
