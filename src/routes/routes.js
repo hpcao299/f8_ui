@@ -23,6 +23,13 @@ const publicRoutes = [
     { path: config.routes.blog, component: Blog },
     { path: config.routes.blogTopics, component: Blog },
     { path: config.routes.blogDetails, component: BlogDetail, layout: MovableSidebar },
+
+    { path: config.routes.profile, component: ProfilePage, layout: TransparentHeader },
+
+    { path: config.routes.signin, component: SigninPage, layout: NoNav },
+];
+
+const privateRoutes = [
     {
         path: config.routes.writeBlog,
         component: WriteBlogPage,
@@ -32,14 +39,8 @@ const publicRoutes = [
             showPublishBtn: true,
         },
     },
-
-    { path: config.routes.profile, component: ProfilePage, layout: TransparentHeader },
     { path: config.routes.myPost, component: MyPostPage },
     { path: config.routes.settings, component: SettingPage, layout: HeaderOnly },
-
-    { path: config.routes.signin, component: SigninPage, layout: NoNav },
 ];
-
-const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };
