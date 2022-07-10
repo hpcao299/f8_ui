@@ -2,13 +2,14 @@ import { Route, Routes } from 'react-router-dom';
 import GlobalStyles from '~/components/GlobalStyles';
 import { DefaultLayout } from '~/layouts';
 import { publicRoutes } from '~/routes';
-import { ScrollToTop } from './utils';
+import { AuthWatcher, ScrollToTop } from './utils';
 
 function App() {
     return (
         <GlobalStyles>
             <div className="app">
                 <ScrollToTop />
+                <AuthWatcher />
 
                 <Routes>
                     {publicRoutes.map((route, index) => {
