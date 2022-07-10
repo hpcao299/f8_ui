@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CreateButton from '~/components/CreateButton';
 import { HomeIcon, LightBulbIcon, NewspaperIcon, RoadIcon } from '~/components/Icons';
 import config from '~/config';
@@ -14,28 +14,40 @@ function Sidebar({ interactive, className }) {
             <CreateButton />
             <ul className={cx('list')}>
                 <li>
-                    <Link to={config.routes.home}>
+                    <NavLink
+                        to={config.routes.home}
+                        className={({ isActive }) => (isActive ? styles.active : '')}
+                    >
                         <HomeIcon />
                         <span>Home</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to={config.routes.learningPaths}>
+                    <NavLink
+                        to={config.routes.learningPaths}
+                        className={({ isActive }) => (isActive ? styles.active : '')}
+                    >
                         <RoadIcon />
                         <span>Lộ trình</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to={config.routes.courses}>
+                    <NavLink
+                        to={config.routes.courses}
+                        className={({ isActive }) => (isActive ? styles.active : '')}
+                    >
                         <LightBulbIcon />
                         <span>Học</span>
-                    </Link>
+                    </NavLink>
                 </li>
                 <li>
-                    <Link to={config.routes.blog}>
+                    <NavLink
+                        to={config.routes.blog}
+                        className={({ isActive }) => (isActive ? styles.active : '')}
+                    >
                         <NewspaperIcon />
                         <span>Blog</span>
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </div>
