@@ -2,11 +2,14 @@ import { Route, Routes } from 'react-router-dom';
 import GlobalStyles from '~/components/GlobalStyles';
 import { DefaultLayout } from '~/layouts';
 import { publicRoutes } from '~/routes';
+import { ScrollToTop } from './utils';
 
 function App() {
     return (
         <GlobalStyles>
             <div className="app">
+                <ScrollToTop />
+
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;
