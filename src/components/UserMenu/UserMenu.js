@@ -13,22 +13,31 @@ function UserMenu({ items }) {
     const [visible, setVisible] = useState(false);
 
     const renderItems = () => {
-        return items.map((item, index) => (
-            <Fragment key={index}>
-                <li>
-                    <Link
-                        to={item.to}
-                        className={cx({
-                            disabled: item.disabled,
-                        })}
-                        onClick={() => setVisible(false)}
-                    >
-                        {item.title}
-                    </Link>
-                </li>
-                {item.separate && <hr />}
-            </Fragment>
-        ));
+        return items.map((item, index) => {
+            const handleItemClick = () => {
+                if (typeof item.onClick === 'function') {
+                    item.onClick();
+                }
+                setVisible(false);
+            };
+
+            return (
+                <Fragment key={index}>
+                    <li>
+                        <Link
+                            to={item.to ? item.to : ''}
+                            className={cx({
+                                disabled: item.disabled,
+                            })}
+                            onClick={handleItemClick}
+                        >
+                            {item.title}
+                        </Link>
+                    </li>
+                    {item.separate && <hr />}
+                </Fragment>
+            );
+        });
     };
 
     return (
@@ -73,6 +82,7 @@ UserMenu.propTypes = {
             to: PropTypes.string,
             title: PropTypes.string.isRequired,
             separate: PropTypes.bool,
+            onClick: PropTypes.func,
         }),
     ),
 };

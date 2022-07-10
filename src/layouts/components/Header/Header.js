@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '~/components/Button';
 import UserMenu from '~/components/UserMenu';
 import config from '~/config';
+import { auth } from '~/config/firebase';
 import Search from '../Search';
 import styles from './Header.module.scss';
 import Logo from './Logo';
@@ -12,38 +13,47 @@ import PublishBtn from './PublishBtn';
 const cx = classNames.bind(styles);
 const currentUser = true;
 
-const USER_MENU = [
-    {
-        title: 'Trang cá nhân',
-        to: '/@nguyenvana',
-        separate: true,
-    },
-    {
-        title: 'Viết blog',
-        to: config.routes.writeBlog,
-    },
-    {
-        title: 'Bài viết của tôi',
-        to: config.routes.myPost,
-        separate: true,
-    },
-    {
-        title: 'Bài viết đã lưu',
-        to: config.routes.myPost,
-        separate: true,
-        disabled: true,
-    },
-    {
-        title: 'Cài đặt',
-        to: config.routes.settings,
-    },
-    {
-        title: 'Đăng xuất',
-        to: config.routes.signin,
-    },
-];
-
 function Header({ hideSearch = false, showPublishBtn = false, transparent = false }) {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        auth.signOut().then(() => {
+            navigate(config.routes.signin);
+        });
+    };
+
+    const USER_MENU = [
+        {
+            title: 'Trang cá nhân',
+            to: '/@nguyenvana',
+            separate: true,
+        },
+        {
+            title: 'Viết blog',
+            to: config.routes.writeBlog,
+        },
+        {
+            title: 'Bài viết của tôi',
+            to: config.routes.myPost,
+            separate: true,
+        },
+        {
+            title: 'Bài viết đã lưu',
+            to: config.routes.myPost,
+            separate: true,
+            disabled: true,
+        },
+        {
+            title: 'Cài đặt',
+            to: config.routes.settings,
+        },
+        {
+            title: 'Đăng xuất',
+            to: '/logout',
+            onClick: handleLogout,
+        },
+    ];
+
     if (transparent) {
         hideSearch = true;
     }
