@@ -2,6 +2,7 @@ import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { Fragment, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Image from '~/components/Image';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -11,6 +12,7 @@ const cx = classNames.bind(styles);
 
 function UserMenu({ items }) {
     const [visible, setVisible] = useState(false);
+    const { currentUser } = useSelector(state => state.auth);
 
     const renderItems = () => {
         return items.map((item, index) => {
@@ -45,14 +47,10 @@ function UserMenu({ items }) {
             content={
                 <PopperWrapper className={cx('wrapper')}>
                     <div className={cx('user')}>
-                        <Image
-                            isAvatar
-                            src="https://files.fullstack.edu.vn/f8-prod/user_avatars/85245/6242eb3973495.jpg"
-                            alt="User"
-                        />
+                        <Image isAvatar src={currentUser.avatar_url} alt={currentUser.username} />
                         <div className={cx('info')}>
-                            <div className={cx('name')}>Nguyen Van A</div>
-                            <div className={cx('username')}>@nguyenvana</div>
+                            <div className={cx('name')}>{currentUser.username}</div>
+                            <div className={cx('username')}>@username</div>
                         </div>
                     </div>
                     <hr />
@@ -68,8 +66,8 @@ function UserMenu({ items }) {
             <Image
                 isAvatar
                 className={cx('avatar')}
-                src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.30497-1/143086968_2856368904622192_1959732218791162458_n.png?stp=cp0_dst-png_p80x80&_nc_cat=1&ccb=1-7&_nc_sid=7206a8&_nc_ohc=wQ3lSAWT3t4AX_gM_jD&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9GK_DHDcW9whNIK9UPeOPy935zP7RIYScbSh4Xmk-zDA&oe=62D65578"
-                alt="Avatar"
+                src={currentUser.avatar_url}
+                alt={currentUser.username}
                 onClick={() => setVisible(!visible)}
             />
         </Tippy>

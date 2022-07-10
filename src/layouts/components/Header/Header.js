@@ -1,6 +1,8 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+
 import Button from '~/components/Button';
 import UserMenu from '~/components/UserMenu';
 import config from '~/config';
@@ -11,9 +13,9 @@ import Logo from './Logo';
 import PublishBtn from './PublishBtn';
 
 const cx = classNames.bind(styles);
-const currentUser = true;
 
 function Header({ hideSearch = false, showPublishBtn = false, transparent = false }) {
+    const { currentUser } = useSelector(state => state.auth);
     const navigate = useNavigate();
 
     const handleLogout = () => {

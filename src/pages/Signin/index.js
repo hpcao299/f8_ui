@@ -1,13 +1,23 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import images from '~/assets/images';
 import Image from '~/components/Image';
+import config from '~/config';
 import SigninButtons from './components/SigninButtons';
 import styles from './Signin.module.scss';
 
 const cx = classNames.bind(styles);
 
 function SigninPage() {
+    const { currentUser } = useSelector(state => state.auth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (currentUser) navigate(config.routes.blog);
+    }, [currentUser, navigate]);
+
     return (
         <div
             className={cx('signin')}
