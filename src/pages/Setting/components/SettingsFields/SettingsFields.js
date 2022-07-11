@@ -1,16 +1,23 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import settingApi from '~/api/settingApi';
+import { messages } from '~/constants';
+import { addNotification } from '~/slices/notificationSlice';
 import FieldWrapper from '../FieldWrapper';
 import GroupField from '../GroupField';
 function SettingsFields({ userProfile, setUserProfile }) {
+    const dispatch = useDispatch();
+
     const handleInputFieldSubmit = value => {
         settingApi
             .updateProfile(value)
             .then(() => {
                 setUserProfile({ ...userProfile, ...value });
+                dispatch(addNotification(messages.updatedSuccessfully));
             })
             .catch(() => {
                 setUserProfile(userProfile);
+                dispatch(addNotification(messages.updatedFailed));
             });
     };
 
