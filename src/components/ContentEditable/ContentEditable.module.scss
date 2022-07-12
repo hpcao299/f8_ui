@@ -1,0 +1,9 @@
+.wrapper {
+    line-height: 1.4;
+    outline: none;
+
+    &:empty::before {
+        content: attr(placeholder);
+        color: #b3b3b1;
+    }
+}

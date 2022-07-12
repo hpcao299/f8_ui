@@ -177,3 +177,12 @@ export const UserGroupIcon = ({ className }) => (
         ></path>
     </svg>
 );
+
+export const CheckIcon = ({ className }) => (
+    <svg className={className} width="16" height="16" viewBox="0 0 16 16">
+        <path
+            fill="currentColor"
+            d="M13.579 2.593a.988.988 0 0 0-1.376.243l-5.759 8.225-2.756-2.756a.987.987 0 1 0-1.397 1.397l3.52 3.52a.978.978 0 0 0 .62.353.985.985 0 0 0 1.032-.519l6.362-9.085a.988.988 0 0 0-.243-1.376z"
+        ></path>
+    </svg>
+);

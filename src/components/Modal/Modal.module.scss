@@ -1,0 +1,59 @@
+.wrapper {
+    display: flex;
+    inset: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    background-color: var(--white-color);
+    z-index: 9999;
+
+    &.fadeIn {
+        animation: fadeIn 0.2s ease;
+        -webkit-animation: fadeIn 0.2s ease;
+    }
+
+    &.fadeOut {
+        animation: fadeOut 0.2s ease;
+        -webkit-animation: fadeOut 0.2s ease;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.close {
+    color: var(--desc-color);
+    font-size: 2.4rem;
+    padding: 12px 24px 24px;
+    position: fixed;
+    right: 8px;
+    top: 0;
+    z-index: 99991;
+
+    &:hover {
+        color: var(--black-color);
+        cursor: pointer;
+    }
+}
+
+.content {
+    padding: 100px 0;
+    position: relative;
+    margin: auto;
+    width: 100%;
+}

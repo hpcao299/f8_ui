@@ -5,9 +5,11 @@
 
 :root {
     --primary-color: #f05123;
+    --secondary-color: #029e74;
     --white-color: #fff;
     --black-color: #000;
     --text-color: #333;
+    --desc-color: #0000008a;
 
     --font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 
@@ -58,9 +60,6 @@ input,
 button {
     border: none;
     outline: none;
-}
-
-input {
     font-family: inherit;
 }
 

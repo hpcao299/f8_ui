@@ -1,0 +1,97 @@
+.leftLayout {
+    padding-right: 2.8rem;
+    line-height: 1.6;
+
+    h3 {
+        color: var(--text-color);
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+}
+
+.img {
+    position: relative;
+    height: 200px;
+    padding: 2.4rem;
+    color: var(--desc-color);
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 1.6rem;
+    background-color: #fafafa;
+    background-position: 50%;
+    background-size: cover;
+
+    label {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        cursor: pointer;
+    }
+
+    input {
+        display: none;
+    }
+
+    p {
+        margin: 14px 0;
+    }
+
+    div {
+        color: var(--primary-color);
+        margin-top: 1.2rem;
+    }
+}
+
+.input {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    margin: 1.6rem 0 4px;
+    padding-bottom: 4px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.desc {
+    font-size: 1.4rem;
+}
+
+.note {
+    color: var(--desc-color);
+    font-size: 1.4rem;
+    margin-top: 2.4rem;
+}
+
+.rightLayout {
+    line-height: 1.6;
+    padding-left: 2.8rem;
+
+    p {
+        color: var(--text-color);
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+}
+
+.allowRecommend {
+    margin-top: 2.6rem;
+}
+
+.actions {
+    margin-top: 3.2rem;
+}
+
+.publishBtn {
+    font-size: 1.4rem;
+    padding: 10px 16px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    background-color: #029e74;
+    color: var(--white-color);
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+}
