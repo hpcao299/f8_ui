@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -9,37 +10,24 @@ import Select from '~/components/Select';
 import config from '~/config';
 import { messages } from '~/constants';
 import { addNotification } from '~/slices/notificationSlice';
+import { fetchTopics } from '~/slices/topicSlice';
 import { endApi, runApi, setTopicId } from '~/slices/writeBlogSlice';
 import MetaDetailsPreview from './MetaDetailsPreview';
 import styles from './PublishPreview.module.scss';
 
 const cx = classNames.bind(styles);
 
-const SELECT_OPTIONS = [
-    {
-        value: 2,
-        title: 'Front-end / Mobile apps',
-    },
-    {
-        value: 3,
-        title: 'Back-end / Devops',
-    },
-    {
-        value: 4,
-        title: 'UI / UX / Design',
-    },
-    {
-        value: 5,
-        title: 'Others',
-    },
-];
-
 function PublishPreview() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { topics } = useSelector(state => state.topic);
     const { title, meta_title, meta_description, value, topic_id, status } = useSelector(
         state => state.writeBlog,
     );
+
+    useEffect(() => {
+        dispatch(fetchTopics());
+    }, [dispatch]);
 
     const handleSelectChange = e => {
         dispatch(setTopicId(e.target.value));
@@ -66,6 +54,8 @@ function PublishPreview() {
         dispatch(endApi());
     };
 
+    const getTopicOptions = () => topics.map(topic => ({ value: topic.id, title: topic.title }));
+
     return (
         <Container style={{ maxWidth: 1224 }}>
             <Row gutterWidth={24}>
@@ -90,7 +80,7 @@ function PublishPreview() {
                             <p>Chọn đề tài để độc giả biết bài viết của bạn nói về điều gì</p>
                             <Select
                                 name="topics"
-                                options={SELECT_OPTIONS}
+                                options={getTopicOptions()}
                                 onChange={handleSelectChange}
                             />
                         </div>
