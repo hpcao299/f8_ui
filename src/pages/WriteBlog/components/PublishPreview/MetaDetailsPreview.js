@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContentEditable from '~/components/ContentEditable';
 import { setMetaDesc, setMetaTitle } from '~/slices/writeBlogSlice';
@@ -9,6 +10,9 @@ const cx = classNames.bind(styles);
 function MetaDetailsPreview() {
     const { meta_title, meta_description } = useSelector(state => state.writeBlog);
     const dispatch = useDispatch();
+
+    const metaTitleDefault = useRef(meta_title);
+    const metaDescDefault = useRef(meta_description);
 
     const handleMetaTitleChange = e => {
         dispatch(setMetaTitle(e.target.value));
@@ -24,13 +28,13 @@ function MetaDetailsPreview() {
                 placeholder="Tiêu đề khi tin được hiển thị"
                 className={cx('input', 'title')}
                 onChange={handleMetaTitleChange}
-                defaultValue={meta_title}
+                defaultValue={metaTitleDefault.current}
             />
             <ContentEditable
                 placeholder="Mô tả khi tin được hiển thị"
                 className={cx('input', 'desc')}
                 onChange={handleMetaDescChange}
-                defaultValue={meta_description}
+                defaultValue={metaDescDefault.current}
             />
             <p className={cx('note')}>
                 <strong>Lưu ý:</strong> Chỉnh sửa tại đây sẽ thay đổi cách bài viết được hiển thị

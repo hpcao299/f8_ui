@@ -1,7 +1,15 @@
 import classNames from 'classnames/bind';
 import { Col, Container, Row } from 'react-grid-system';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import blogApi from '~/api/blogApi';
 import Checkbox from '~/components/Checkbox';
 import Select from '~/components/Select';
+import config from '~/config';
+import { messages } from '~/constants';
+import { addNotification } from '~/slices/notificationSlice';
+import { endApi, runApi, setTopicId } from '~/slices/writeBlogSlice';
 import MetaDetailsPreview from './MetaDetailsPreview';
 import styles from './PublishPreview.module.scss';
 
@@ -27,8 +35,35 @@ const SELECT_OPTIONS = [
 ];
 
 function PublishPreview() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { title, meta_title, meta_description, value, topic_id, status } = useSelector(
+        state => state.writeBlog,
+    );
+
     const handleSelectChange = e => {
-        console.log(e.target.value);
+        dispatch(setTopicId(e.target.value));
+    };
+
+    const handlePublish = async () => {
+        const newPostDetails = {
+            title,
+            meta_title,
+            meta_description,
+            content: value,
+            topic_id,
+        };
+
+        dispatch(runApi());
+        try {
+            await blogApi.newPost(newPostDetails);
+            dispatch(addNotification(messages.newPostSuccessfully));
+            navigate(config.routes.myPost);
+        } catch (error) {
+            dispatch(addNotification(messages.newPostFailed));
+            console.log(error);
+        }
+        dispatch(endApi());
     };
 
     return (
@@ -63,7 +98,14 @@ function PublishPreview() {
                             <Checkbox text="Đề xuất bài viết của bạn đến các độc giả quan tâm tới nội dung này." />
                         </div>
                         <div className={cx('actions')}>
-                            <button className={cx('publishBtn')}>Xuất bản ngay</button>
+                            <button
+                                className={cx('publishBtn', {
+                                    disabled: status === 'loading',
+                                })}
+                                onClick={handlePublish}
+                            >
+                                Xuất bản ngay
+                            </button>
                         </div>
                     </div>
                 </Col>

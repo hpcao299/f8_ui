@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import styles from './Select.module.scss';
 
-function Select({ options, onChange, ...props }) {
+function Select({ options, onChange, defaultValue, ...props }) {
     return (
-        <select {...props} className={styles.select} onChange={onChange}>
+        <select
+            {...props}
+            className={styles.select}
+            onChange={onChange}
+            defaultValue={defaultValue}
+        >
             {options.map((option, index) => (
                 <option key={index} value={option.value}>
                     {option.title}
@@ -20,6 +25,7 @@ Select.propTypes = {
             title: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.bool]),
         }),
     ),
+    defaultValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.bool]),
     onChange: PropTypes.func,
 };
 

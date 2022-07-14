@@ -63,6 +63,11 @@ button {
     font-family: inherit;
 }
 
+button.disabled {
+    opacity: 0.5 !important;
+    pointer-events: none !important;
+}
+
 a {
     color: var(--text-color);
     text-decoration: none;
