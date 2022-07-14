@@ -4,8 +4,8 @@ const routes = {
     courses: '/courses',
 
     blog: '/blog',
-    blogTopics: '/blog/topic/:topic',
-    blogDetails: '/blog/:slug',
+    blogTopics: '/blog/:topicId/:topicSlug',
+    blogDetails: '/blog/details/:id/:slug',
     writeBlog: '/new-post',
 
     profile: '/@:username',

@@ -1,41 +1,49 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { fetchTopics } from '~/slices/topicSlice';
 import styles from './TopicsList.module.scss';
 
 const cx = classNames.bind(styles);
 
-const TOPICS_LIST = [
-    {
-        title: 'Front-end / Mobile apps',
-        to: '/blog/topic/front-end-mobile-apps',
-    },
-    {
-        title: 'Back-end / Devops',
-        to: '/blog/topic/back-end-devops',
-    },
-    {
-        title: 'UI / UX / Design',
-        to: '/blog/topic/ui-ux-design',
-    },
-    {
-        title: 'Others',
-        to: '/blog/topic/others',
-    },
-];
+function TopicsList({ hideCurrentTopic = false }) {
+    const { topics } = useSelector(state => state.topic);
+    const dispatch = useDispatch();
+    const { topicId } = useParams();
 
-function TopicsList() {
+    useEffect(() => {
+        dispatch(fetchTopics());
+    }, [dispatch]);
+
+    const renderTopics = () => {
+        let topicsList = topics;
+        if (hideCurrentTopic && topicId) {
+            topicsList = topicsList.filter(topic => topic.id !== Number(topicId));
+        }
+
+        return topicsList.map(topic => (
+            <li key={topic.id}>
+                <Link to={`/blog/${topic.id}/${topic.slug}`}>{topic.title}</Link>
+            </li>
+        ));
+    };
+
     return (
         <div className={cx('wrapper')}>
-            <h3>CÁC CHỦ ĐỀ ĐƯỢC ĐỀ XUẤT</h3>
-            <ul className={cx('list')}>
-                {TOPICS_LIST.map((topic, index) => (
-                    <li key={index}>
-                        <Link to={topic.to}>{topic.title}</Link>
-                    </li>
-                ))}
-            </ul>
+            {topics.length > 0 && (
+                <>
+                    <h3>CÁC CHỦ ĐỀ ĐƯỢC ĐỀ XUẤT</h3>
+                    <ul className={cx('list')}>{renderTopics()}</ul>
+                </>
+            )}
         </div>
     );
 }
+
+TopicsList.propTypes = {
+    hideCurrentTopic: PropTypes.bool,
+};
 
 export default TopicsList;
