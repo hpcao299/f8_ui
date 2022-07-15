@@ -46,7 +46,7 @@ function PublishPreview() {
         try {
             await blogApi.newPost(newPostDetails);
             dispatch(addNotification(messages.newPostSuccessfully));
-            navigate(config.routes.myPost);
+            navigate(config.routes.myPublishedPost);
         } catch (error) {
             dispatch(addNotification(messages.newPostFailed));
             console.log(error);

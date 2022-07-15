@@ -1,0 +1,37 @@
+.tabs {
+    display: flex;
+    list-style: none;
+    margin-top: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    li + li {
+        margin-left: 24px;
+    }
+
+    a {
+        color: var(--desc-color);
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 500;
+        padding-bottom: 14px;
+    }
+
+    a.active {
+        font-weight: 700;
+        position: relative;
+    }
+
+    a.active,
+    a:hover {
+        color: var(--black-color);
+    }
+
+    a.active::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        bottom: -1px;
+        display: block;
+        border-bottom: 2px solid var(--black-color);
+    }
+}

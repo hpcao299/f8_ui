@@ -41,7 +41,8 @@ const privateRoutes = [
             showPublishBtn: true,
         },
     },
-    { path: config.routes.myPost, component: MyPostPage },
+    { path: config.routes.myDraftsPost, component: MyPostPage },
+    { path: config.routes.myPublishedPost, component: MyPostPage },
     { path: config.routes.settings, component: SettingPage, layout: HeaderOnly },
 ];
 

@@ -36,12 +36,12 @@ function Header({ hideSearch = false, showPublishBtn = false, transparent = fals
         },
         {
             title: 'Bài viết của tôi',
-            to: config.routes.myPost,
+            to: config.routes.myDraftsPost,
             separate: true,
         },
         {
             title: 'Bài viết đã lưu',
-            to: config.routes.myPost,
+            to: config.routes.myDraftsPost,
             separate: true,
             disabled: true,
         },
@@ -75,7 +75,7 @@ function Header({ hideSearch = false, showPublishBtn = false, transparent = fals
                     <>
                         {showPublishBtn && <PublishBtn />}
                         {!transparent && (
-                            <Link to={config.routes.myPost} className={cx('myPosts')}>
+                            <Link to={config.routes.myDraftsPost} className={cx('myPosts')}>
                                 Bài viết của tôi
                             </Link>
                         )}

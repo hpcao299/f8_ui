@@ -13,6 +13,18 @@ const blogApi = {
         const url = `/blogs/topic/${topic_id}`;
         return axiosClient.get(url);
     },
+    getDraftsPosts() {
+        const url = '/blogs/my-posts/drafts';
+        return axiosClient.get(url);
+    },
+    getPublishedPosts() {
+        const url = '/blogs/my-posts/published';
+        return axiosClient.get(url);
+    },
+    deletePost(id) {
+        const url = `/blogs/${id}`;
+        return axiosClient.delete(url);
+    },
 };
 
 export default blogApi;
