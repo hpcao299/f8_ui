@@ -7,10 +7,11 @@ const cx = classNames.bind(styles);
 
 function ContentEditable({ className, placeholder, onChange, defaultValue = '', ...props }) {
     const contentEditableRef = useRef(null);
+    const defaultValueRef = useRef(defaultValue);
 
     useEffect(() => {
-        contentEditableRef.current.innerText = defaultValue;
-    }, [defaultValue]);
+        contentEditableRef.current.innerText = defaultValueRef.current;
+    }, [defaultValueRef]);
 
     const handleChange = () => {
         const value = contentEditableRef.current.innerText;

@@ -2,16 +2,16 @@ import classNames from 'classnames/bind';
 import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
 import blogApi from '~/api/blogApi';
+
 import Checkbox from '~/components/Checkbox';
 import Select from '~/components/Select';
 import config from '~/config';
 import { messages } from '~/constants';
 import { addNotification } from '~/slices/notificationSlice';
 import { fetchTopics } from '~/slices/topicSlice';
-import { endApi, runApi, setTopicId } from '~/slices/writeBlogSlice';
+import { endApi, runApi, selectPostTopic, setTopicId } from '~/slices/writeBlogSlice';
 import MetaDetailsPreview from './MetaDetailsPreview';
 import styles from './PublishPreview.module.scss';
 
@@ -21,40 +21,33 @@ function PublishPreview() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { topics } = useSelector(state => state.topic);
-    const { title, meta_title, meta_description, value, topic_id, status } = useSelector(
-        state => state.writeBlog,
-    );
+    const { status } = useSelector(state => state.writeBlog);
+    const { blogId } = useParams();
 
     useEffect(() => {
         dispatch(fetchTopics());
     }, [dispatch]);
 
     const handleSelectChange = e => {
-        dispatch(setTopicId(e.target.value));
+        const topicId = e.target.value;
+        dispatch(setTopicId(topicId));
+        dispatch(selectPostTopic({ blogId, data: { id: topicId } }));
     };
 
-    const handlePublish = async () => {
-        const newPostDetails = {
-            title,
-            meta_title,
-            meta_description,
-            content: value,
-            topic_id,
-        };
+    const getTopicOptions = () => topics.map(topic => ({ value: topic.id, title: topic.title }));
 
+    const handlePublish = async () => {
         dispatch(runApi());
         try {
-            await blogApi.newPost(newPostDetails);
-            dispatch(addNotification(messages.newPostSuccessfully));
+            await blogApi.publishPost(blogId);
+            dispatch(addNotification(messages.publishPostSuccessfully));
             navigate(config.routes.myPublishedPost);
         } catch (error) {
-            dispatch(addNotification(messages.newPostFailed));
+            dispatch(addNotification(messages.publishPostFailed));
             console.log(error);
         }
         dispatch(endApi());
     };
-
-    const getTopicOptions = () => topics.map(topic => ({ value: topic.id, title: topic.title }));
 
     return (
         <Container style={{ maxWidth: 1224 }}>

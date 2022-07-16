@@ -5,6 +5,22 @@ const blogApi = {
         const url = '/blogs/new-post';
         return axiosClient.post(url, data);
     },
+    editPost(id, data) {
+        const url = `/blogs/${id}/edit`;
+        return axiosClient.put(url, data);
+    },
+    selectPostTopic(id, data) {
+        const url = `/blogs/${id}/topic`;
+        return axiosClient.patch(url, data);
+    },
+    publishPost(id) {
+        const url = `/blogs/${id}/publish`;
+        return axiosClient.patch(url);
+    },
+    getPostForEdit(id) {
+        const url = `/blogs/${id}/show-for-edit`;
+        return axiosClient.get(url);
+    },
     getNewPosts() {
         const url = '/blogs';
         return axiosClient.get(url);

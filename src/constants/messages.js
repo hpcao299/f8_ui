@@ -4,8 +4,8 @@ const messages = {
     updatedFailed: 'Cập nhật thất bại',
 
     // Write blog api messages
-    newPostSuccessfully: 'Xuất bản thành công',
-    newPostFailed: 'Xuất bản thất bại',
+    publishPostSuccessfully: 'Xuất bản thành công',
+    publishPostFailed: 'Xuất bản thất bại',
 };
 
 export default messages;

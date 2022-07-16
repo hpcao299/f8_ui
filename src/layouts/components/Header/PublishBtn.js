@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 const cx = classNames.bind(styles);
 
 function PublishBtn() {
-    const { title, value } = useSelector(state => state.writeBlog);
+    const { title, content } = useSelector(state => state.writeBlog);
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -19,7 +19,7 @@ function PublishBtn() {
             className={cx('publishBtn')}
             onClick={handleClick}
             primary
-            disabled={!title || !value}
+            disabled={!title || !content}
         >
             Xuất bản
         </Button>

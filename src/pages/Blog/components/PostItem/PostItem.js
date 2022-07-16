@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Image from '~/components/Image';
+import { checkDataExists } from '~/utils';
 import styles from './PostItem.module.scss';
 
 const cx = classNames.bind(styles);
@@ -22,9 +23,9 @@ function PostItem({ data }) {
             <div className={cx('body')}>
                 <div className={cx('info')}>
                     <Link to={`/blog/details/${data.id}/${data.slug}`}>
-                        <h3>{data.meta_title}</h3>
+                        <h3>{checkDataExists(data.meta_title)}</h3>
                     </Link>
-                    <p>{data.meta_description !== 'null' ? data.meta_description : ''}</p>
+                    <p>{checkDataExists(data.meta_description)}</p>
                     <div>
                         <span>25 ngày trước</span>
                         <span className={cx('dot')}>·</span>

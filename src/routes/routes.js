@@ -41,6 +41,15 @@ const privateRoutes = [
             showPublishBtn: true,
         },
     },
+    {
+        path: config.routes.editBlog,
+        component: WriteBlogPage,
+        layout: HeaderOnly,
+        props: {
+            hideSearch: true,
+            showPublishBtn: true,
+        },
+    },
     { path: config.routes.myDraftsPost, component: MyPostPage },
     { path: config.routes.myPublishedPost, component: MyPostPage },
     { path: config.routes.settings, component: SettingPage, layout: HeaderOnly },

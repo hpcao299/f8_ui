@@ -7,6 +7,7 @@ const routes = {
     blogTopics: '/blog/:topicId/:topicSlug',
     blogDetails: '/blog/details/:id/:slug',
     writeBlog: '/new-post',
+    editBlog: '/post/:blogId/edit',
 
     profile: '/@:username',
     myDraftsPost: '/me/posts/drafts',
