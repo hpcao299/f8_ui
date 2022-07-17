@@ -57,8 +57,7 @@ function MyPostPage() {
     const handleDeletePost = async id => {
         try {
             await blogApi.deletePost(id);
-            const posts = postsList.filter(post => post.id !== id);
-            setPostsList(posts);
+            setPostsList(posts => posts.filter(post => post.id !== id));
         } catch (error) {
             console.error(error);
         }

@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Image from '~/components/Image';
-import { checkDataExists } from '~/utils';
+import { checkDataExists, momentFromNow } from '~/utils';
 import styles from './PostItem.module.scss';
 
 const cx = classNames.bind(styles);
@@ -27,7 +27,7 @@ function PostItem({ data }) {
                     </Link>
                     <p>{checkDataExists(data.meta_description)}</p>
                     <div>
-                        <span>25 ngày trước</span>
+                        <span>{momentFromNow(data.published_at)}</span>
                         <span className={cx('dot')}>·</span>
                         <span>2 phút đọc</span>
                     </div>
@@ -38,7 +38,7 @@ function PostItem({ data }) {
 }
 
 PostItem.propTypes = {
-    data: PropTypes.object,
+    data: PropTypes.object.isRequired,
 };
 
 export default PostItem;

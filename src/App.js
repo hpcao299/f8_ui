@@ -1,9 +1,13 @@
+import moment from 'moment';
+import 'moment/locale/vi';
 import { HelmetProvider } from 'react-helmet-async';
 import { Routes } from 'react-router-dom';
 import GlobalStyles from '~/components/GlobalStyles';
 import { privateRoutes, publicRoutes } from '~/routes';
 import Notifications from './components/Notifications';
 import { AuthWatcher, renderRoutes, ScrollToTop } from './utils';
+
+moment.locale('vi');
 
 function App() {
     return (

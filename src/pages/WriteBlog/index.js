@@ -64,11 +64,6 @@ function WriteBlogPage() {
         dispatch(hidePublishPreview());
     };
 
-    console.log('[values] :', {
-        title,
-        content,
-    });
-
     return (
         <div className={cx('wrapper')}>
             <Helmet>
