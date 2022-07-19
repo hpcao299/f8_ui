@@ -63,7 +63,7 @@ button {
     font-family: inherit;
 }
 
-button.disabled {
+.disabled {
     opacity: 0.5 !important;
     pointer-events: none !important;
 }
@@ -71,11 +71,6 @@ button.disabled {
 a {
     color: var(--text-color);
     text-decoration: none;
-
-    &.disabled {
-        opacity: 0.5 !important;
-        pointer-events: none;
-    }
 }
 
 .svg-inline--fa {

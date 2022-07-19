@@ -75,7 +75,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                     data={{
                         name: 'User Name',
                         value: userProfile.username,
-                        desc: `URL: https://fullstack.edu.vn/@${userProfile.username}`,
+                        desc: `URL: https://fullstack.edu.vn/${userProfile.username}`,
                     }}
                     inputProps={{ placeholder: 'Thêm user name' }}
                     type="input"

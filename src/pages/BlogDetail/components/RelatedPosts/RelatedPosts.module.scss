@@ -53,3 +53,17 @@
     overflow: hidden;
     width: 100%;
 }
+
+.content {
+    -webkit-mask-image: linear-gradient(#fff, #fff, hsla(0, 0%, 100%, 0));
+    mask-image: linear-gradient(#fff, #fff, hsla(0, 0%, 100%, 0));
+    max-height: 420px;
+    overflow: hidden;
+}
+
+.readMore {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 32px 0 48px;
+}

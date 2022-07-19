@@ -29,7 +29,7 @@ function PostItem({ data }) {
                     <div>
                         <span>{momentFromNow(data.published_at)}</span>
                         <span className={cx('dot')}>·</span>
-                        <span>2 phút đọc</span>
+                        <span>{data.min_read} phút đọc</span>
                     </div>
                 </div>
             </div>
