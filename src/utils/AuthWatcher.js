@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import authApi from '~/api/authApi';
+import userApi from '~/api/userApi';
 import { auth } from '~/config/firebase';
 import { logout, setCurrentUser } from '~/slices/authSlice';
 
@@ -18,7 +18,7 @@ export function AuthWatcher() {
                 };
                 dispatch(setCurrentUser(currentUser));
                 localStorage.setItem('auth', JSON.stringify({ isSignedIn: true }));
-                authApi.registerUser();
+                userApi.registerUser();
                 return;
             }
 

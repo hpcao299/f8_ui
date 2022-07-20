@@ -9,7 +9,7 @@ const routes = {
     writeBlog: '/new-post',
     editBlog: '/post/:blogId/edit',
 
-    profile: '/@:username',
+    profile: '/:id/:username',
     myDraftsPost: '/me/posts/drafts',
     myPublishedPost: '/me/posts/published',
     settings: '/settings',

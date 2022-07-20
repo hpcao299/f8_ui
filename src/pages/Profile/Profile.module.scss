@@ -94,6 +94,11 @@
 .info-title {
     font-size: 1.6rem;
     font-weight: 600;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    overflow: hidden;
 }
 
 .info-desc {

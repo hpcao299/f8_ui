@@ -12,10 +12,10 @@ function PostItem({ data }) {
         <div className={cx('wrapper')}>
             <div className={cx('header')}>
                 <div className={cx('author')}>
-                    <Link to={`/${data.username}`}>
+                    <Link to={`/${data.user_id}/${data.username}`}>
                         <Image isAvatar src={data.avatar_url} alt={data.full_name} />
                     </Link>
-                    <Link to={`/${data.username}`}>
+                    <Link to={`/${data.user_id}/${data.username}`}>
                         <span>{data.full_name}</span>
                     </Link>
                 </div>

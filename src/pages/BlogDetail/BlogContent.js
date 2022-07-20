@@ -20,11 +20,14 @@ function BlogContent({ postDetails }) {
             <h1 className={cx('heading')}>{postDetails.title}</h1>
             <div className={cx('header')}>
                 <div className={cx('user')}>
-                    <Link to="/@example" className={cx('avatar')}>
+                    <Link
+                        to={`/${postDetails.user_id}/${postDetails.username}`}
+                        className={cx('avatar')}
+                    >
                         <Image src={postDetails.avatar_url} alt={postDetails.full_name} isAvatar />
                     </Link>
                     <div className={cx('info')}>
-                        <Link to="/@example">
+                        <Link to={`/${postDetails.user_id}/${postDetails.username}`}>
                             <p className={cx('name')}>{postDetails.full_name}</p>
                         </Link>
                         <p className={cx('time')}>
