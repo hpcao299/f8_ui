@@ -64,23 +64,30 @@ const writeBlogSlice = createSlice({
                 state.status = 'loading';
             })
             .addCase(fetchPostForEdit.fulfilled, (state, action) => {
-                state.title = checkDataExists(action.payload.title);
-                state.content = checkDataExists(action.payload.content);
-                state.meta_title = checkDataExists(action.payload.meta_title);
-                state.meta_description = checkDataExists(action.payload.meta_description);
+                state.title = checkDataExists(action?.payload?.title);
+                state.content = checkDataExists(action?.payload?.content);
+                state.meta_title = checkDataExists(action?.payload?.meta_title);
+                state.meta_description = checkDataExists(action?.payload?.meta_description);
                 state.status = 'idle';
+            })
+            .addCase(fetchPostForEdit.rejected, (state, action) => {
+                state.status = 'failed';
             });
     },
 });
 
-export const fetchPostForEdit = createAsyncThunk('writeBlog/fetchPostForEdit', async blogId => {
-    try {
-        const { data } = await blogApi.getPostForEdit(blogId);
-        return data;
-    } catch (error) {
-        console.error(error);
-    }
-});
+export const fetchPostForEdit = createAsyncThunk(
+    'writeBlog/fetchPostForEdit',
+    async (blogId, { rejectWithValue }) => {
+        try {
+            const { data } = await blogApi.getPostForEdit(blogId);
+            return data;
+        } catch (error) {
+            console.error(error);
+            return rejectWithValue(error.response.data);
+        }
+    },
+);
 
 export const newPost = createAsyncThunk(
     'writeBlog/newPost',

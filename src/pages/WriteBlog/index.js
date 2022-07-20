@@ -42,6 +42,12 @@ function WriteBlogPage() {
     }, [blogId, dispatch]);
 
     useEffect(() => {
+        if (status === 'failed') {
+            navigate(config.routes.notFound);
+        }
+    }, [status, navigate]);
+
+    useEffect(() => {
         const newPostOnSuccess = blog_id => {
             navigate(`/post/${blog_id}/edit`, { replace: true });
         };

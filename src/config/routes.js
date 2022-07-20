@@ -16,6 +16,8 @@ const routes = {
 
     signin: '/a/signin',
     logout: '/a/logout',
+
+    notFound: '/not-found',
 };
 
 export default routes;
