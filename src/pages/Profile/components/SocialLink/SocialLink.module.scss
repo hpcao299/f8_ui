@@ -1,0 +1,29 @@
+.link {
+    display: flex;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    margin-top: 15px;
+
+    a {
+        display: -webkit-box;
+        word-wrap: break-word;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        color: #0056d6;
+        overflow: hidden;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+.icon {
+    color: #808990;
+    font-size: 1.6rem;
+    margin-right: 8px;
+    margin-top: 2px;
+    padding-top: 1px;
+    text-align: center;
+    width: 20px;
+}

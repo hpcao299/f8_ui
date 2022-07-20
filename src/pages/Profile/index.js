@@ -9,6 +9,7 @@ import Box from '~/components/Box';
 import { UserGroupIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import { momentFromNow } from '~/utils';
+import SocialLink from './components/SocialLink';
 import PostItem from './PostItem';
 import styles from './Profile.module.scss';
 
@@ -35,6 +36,29 @@ function ProfilePage() {
 
         fetchProfilePosts();
     }, [id]);
+
+    const SOCIAL_LINK_LIST = [
+        {
+            link: user.facebook_url,
+            icon: 'facebook',
+        },
+        {
+            link: user.youtube_url,
+            icon: 'youtube',
+        },
+        {
+            link: user.instagram_url,
+            icon: 'instagram',
+        },
+        {
+            link: user.linkedin_url,
+            icon: 'linkedin',
+        },
+        {
+            link: user.twitter_url,
+            icon: 'twitter',
+        },
+    ];
 
     return !isLoading ? (
         <Container style={{ padding: '0 20px' }}>
@@ -63,6 +87,9 @@ function ProfilePage() {
                                         từ {momentFromNow(user.joined_at)}
                                     </span>
                                 </div>
+                                {SOCIAL_LINK_LIST.map((data, i) => (
+                                    <SocialLink data={data} key={i} />
+                                ))}
                             </Box>
                         </Col>
                         <Col sm={12} md={12} lg={7}>

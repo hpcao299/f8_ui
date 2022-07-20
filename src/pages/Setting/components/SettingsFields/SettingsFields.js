@@ -81,6 +81,79 @@ function SettingsFields({ userProfile, setUserProfile }) {
                     type="input"
                 />
             </GroupField>
+
+            <GroupField heading="Mạng xã hội">
+                <FieldWrapper
+                    data={{
+                        name: 'Facebook',
+                        value: userProfile.facebook_url,
+                    }}
+                    isEditable
+                    inputProps={{
+                        placeholder: 'Eg. https://www.facebook.com/hoclaptrinhf8',
+                        maxLength: 150,
+                        name: 'facebook_url',
+                    }}
+                    handleSubmit={handleInputFieldSubmit}
+                    type="input"
+                />
+                <FieldWrapper
+                    data={{
+                        name: 'Youtube',
+                        value: userProfile.youtube_url,
+                    }}
+                    isEditable
+                    inputProps={{
+                        placeholder: 'Eg. https://www.youtube.com/c/F8VNOfficial',
+                        maxLength: 150,
+                        name: 'youtube_url',
+                    }}
+                    handleSubmit={handleInputFieldSubmit}
+                    type="input"
+                />
+                <FieldWrapper
+                    data={{
+                        name: 'Linkedin',
+                        value: userProfile.linkedin_url,
+                    }}
+                    isEditable
+                    inputProps={{
+                        placeholder: 'Eg. https://www.linkedin.com/in/hoclaptrinhf8/',
+                        maxLength: 150,
+                        name: 'linkedin_url',
+                    }}
+                    handleSubmit={handleInputFieldSubmit}
+                    type="input"
+                />
+                <FieldWrapper
+                    data={{
+                        name: 'Instagram',
+                        value: userProfile.instagram_url,
+                    }}
+                    isEditable
+                    inputProps={{
+                        placeholder: 'Eg. https://www.instagram.com/hoclaptrinhf8/',
+                        maxLength: 150,
+                        name: 'instagram_url',
+                    }}
+                    handleSubmit={handleInputFieldSubmit}
+                    type="input"
+                />
+                <FieldWrapper
+                    data={{
+                        name: 'Twitter',
+                        value: userProfile.twitter_url,
+                    }}
+                    isEditable
+                    inputProps={{
+                        placeholder: 'Eg. https://twitter.com/hoclaptrinhf8',
+                        maxLength: 150,
+                        name: 'twitter_url',
+                    }}
+                    handleSubmit={handleInputFieldSubmit}
+                    type="input"
+                />
+            </GroupField>
         </>
     );
 }
