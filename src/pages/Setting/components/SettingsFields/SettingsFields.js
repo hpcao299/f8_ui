@@ -27,7 +27,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Họ tên',
-                        value: userProfile.full_name,
+                        value: userProfile.full_name || '',
                         desc: 'Tên của bạn xuất hiện trên trang cá nhân và bên cạnh các bình luận của bạn.',
                     }}
                     isEditable
@@ -42,7 +42,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Bio',
-                        value: userProfile.bio,
+                        value: userProfile.bio || '',
                         desc: 'Bio hiển thị trên trang cá nhân và trong các bài viết (blog) của bạn.',
                     }}
                     isEditable
@@ -56,7 +56,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 />
                 <FieldWrapper
                     data={{
-                        value: userProfile.avatar_url,
+                        value: userProfile.avatar_url || '',
                         name: 'Avatar',
                         desc: 'Nên là ảnh vuông, chấp nhận các tệp: JPG, PNG hoặc GIF.',
                     }}
@@ -66,7 +66,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Email',
-                        value: userProfile.email,
+                        value: userProfile.email || '',
                     }}
                     inputProps={{ placeholder: 'Eg. hoclaptrinh@f8.edu.vn' }}
                     type="input"
@@ -74,8 +74,10 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'User Name',
-                        value: userProfile.username,
-                        desc: `URL: http://localhost:3000/${userProfile.id}/${userProfile.username}`,
+                        value: userProfile.username || '',
+                        desc: `URL: http://localhost:3000/${userProfile.id || ''}/${
+                            userProfile.username || ''
+                        }`,
                     }}
                     inputProps={{ placeholder: 'Thêm user name' }}
                     type="input"
@@ -86,7 +88,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Facebook',
-                        value: userProfile.facebook_url,
+                        value: userProfile.facebook_url || '',
                     }}
                     isEditable
                     inputProps={{
@@ -100,7 +102,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Youtube',
-                        value: userProfile.youtube_url,
+                        value: userProfile.youtube_url || '',
                     }}
                     isEditable
                     inputProps={{
@@ -114,7 +116,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Linkedin',
-                        value: userProfile.linkedin_url,
+                        value: userProfile.linkedin_url || '',
                     }}
                     isEditable
                     inputProps={{
@@ -128,7 +130,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Instagram',
-                        value: userProfile.instagram_url,
+                        value: userProfile.instagram_url || '',
                     }}
                     isEditable
                     inputProps={{
@@ -142,7 +144,7 @@ function SettingsFields({ userProfile, setUserProfile }) {
                 <FieldWrapper
                     data={{
                         name: 'Twitter',
-                        value: userProfile.twitter_url,
+                        value: userProfile.twitter_url || '',
                     }}
                     isEditable
                     inputProps={{

@@ -21,7 +21,7 @@ function PublishPreview() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { topics } = useSelector(state => state.topic);
-    const { status } = useSelector(state => state.writeBlog);
+    const { status, meta_title, meta_description } = useSelector(state => state.writeBlog);
     const { blogId } = useParams();
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function PublishPreview() {
     const handlePublish = async () => {
         dispatch(runApi());
         try {
-            await blogApi.publishPost(blogId);
+            await blogApi.publishPost({ id: blogId, meta_title, meta_description });
             dispatch(addNotification(messages.publishPostSuccessfully));
             navigate(config.routes.myPublishedPost);
         } catch (error) {

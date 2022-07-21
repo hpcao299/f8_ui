@@ -18,9 +18,9 @@ const blogApi = {
         const url = `/blogs/${id}/topic`;
         return axiosClient.patch(url, data);
     },
-    publishPost(id) {
+    publishPost({ id, ...data }) {
         const url = `/blogs/${id}/publish`;
-        return axiosClient.patch(url);
+        return axiosClient.patch(url, data);
     },
     deletePost(id) {
         const url = `/blogs/${id}`;

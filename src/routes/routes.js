@@ -23,7 +23,14 @@ const publicRoutes = [
 
     { path: config.routes.blog, component: Blog },
     { path: config.routes.blogTopics, component: Blog },
-    { path: config.routes.blogDetails, component: BlogDetail, layout: MovableSidebar },
+    {
+        path: config.routes.blogDetails,
+        component: BlogDetail,
+        layout: MovableSidebar,
+        props: {
+            movingHeader: true,
+        },
+    },
 
     { path: config.routes.profile, component: ProfilePage, layout: TransparentHeader },
 

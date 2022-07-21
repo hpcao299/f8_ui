@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -14,9 +15,34 @@ import PublishBtn from './PublishBtn';
 
 const cx = classNames.bind(styles);
 
-function Header({ hideSearch = false, showPublishBtn = false, transparent = false }) {
+function Header({
+    hideSearch = false,
+    showPublishBtn = false,
+    transparent = false,
+    movingHeader = false,
+}) {
     const { currentUser } = useSelector(state => state.auth);
     const navigate = useNavigate();
+    const [direction, setDirection] = useState('appear');
+
+    useEffect(() => {
+        let lastScrollY = window.scrollY;
+        const handleScrollWindow = () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 200 && scrollY > lastScrollY) {
+                setDirection('disappear');
+            } else {
+                setDirection('appear');
+            }
+            lastScrollY = scrollY;
+        };
+
+        if (movingHeader) {
+            window.addEventListener('scroll', handleScrollWindow);
+        }
+
+        return () => window.removeEventListener('scroll', handleScrollWindow);
+    }, [movingHeader]);
 
     const handleLogout = () => {
         auth.signOut().then(() => {
@@ -61,7 +87,7 @@ function Header({ hideSearch = false, showPublishBtn = false, transparent = fals
     }
 
     return (
-        <header className={cx('wrapper', { transparent })}>
+        <header className={cx('wrapper', { transparent, moveOut: direction === 'disappear' })}>
             <Logo />
 
             {!hideSearch && (
@@ -95,6 +121,7 @@ Header.propTypes = {
     hideSearch: PropTypes.bool,
     showPublishBtn: PropTypes.bool,
     transparent: PropTypes.bool,
+    movingHeader: PropTypes.bool,
 };
 
 export default Header;
