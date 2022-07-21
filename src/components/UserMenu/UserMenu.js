@@ -47,10 +47,10 @@ function UserMenu({ items }) {
             content={
                 <PopperWrapper className={cx('wrapper')}>
                     <div className={cx('user')}>
-                        <Image isAvatar src={currentUser.avatar_url} alt={currentUser.username} />
+                        <Image isAvatar src={currentUser.avatar_url} alt={currentUser.full_name} />
                         <div className={cx('info')}>
-                            <div className={cx('name')}>{currentUser.username}</div>
-                            <div className={cx('username')}>@username</div>
+                            <div className={cx('name')}>{currentUser.full_name}</div>
+                            <div className={cx('username')}>{currentUser.username}</div>
                         </div>
                     </div>
                     <hr />

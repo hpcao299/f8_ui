@@ -9,6 +9,10 @@ const userApi = {
         const url = `/users/${user_id}/profile`;
         return axiosClient.get(url);
     },
+    getCurrentUser() {
+        const url = `/users/current-user`;
+        return axiosClient.get(url);
+    },
 };
 
 export default userApi;

@@ -27,7 +27,7 @@ function Header({ hideSearch = false, showPublishBtn = false, transparent = fals
     const USER_MENU = [
         {
             title: 'Trang cá nhân',
-            to: `/${currentUser?.id}`,
+            to: `/${currentUser?.id}/${currentUser?.username}`,
             separate: true,
         },
         {
