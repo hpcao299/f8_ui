@@ -106,3 +106,43 @@
 .body-bottom {
     margin-top: 60px;
 }
+
+@media (max-width: 1112px) {
+    .content {
+        padding: 0;
+    }
+
+    .wrapper {
+        .rightLayout {
+            padding: 0 !important;
+            width: 100% !important;
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+        }
+
+        .container {
+            padding: 0 !important;
+            max-width: 100% !important;
+        }
+
+        .row {
+            margin: 0 !important;
+        }
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+    .wrapper {
+        padding: 0 32px 60px;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 739px) {
+    .wrapper {
+        padding: 0 16px 60px;
+    }
+
+    .heading {
+        font-size: 3.2rem;
+    }
+}

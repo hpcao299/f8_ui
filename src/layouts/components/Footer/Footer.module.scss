@@ -76,7 +76,6 @@
 .bottom {
     width: 100%;
     margin-top: 48px;
-    padding: 0 12px;
     display: flex;
     align-items: center;
 }
@@ -91,8 +90,11 @@
 }
 
 .social-item {
-    margin-left: 12px;
     font-size: 3.2rem;
+
+    & + .social-item {
+        margin-left: 12px;
+    }
 
     &.youtube-icon {
         color: #eb2c3b;
@@ -109,4 +111,38 @@
 
 .space {
     height: 98px;
+}
+
+@media (min-width: 0px) and (max-width: 1200px) {
+    .column {
+        justify-content: flex-start;
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+    .container {
+        width: 644px;
+    }
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+    .container {
+        max-width: unset !important;
+    }
+}
+
+@media (min-width: 0) and (max-width: 739px) {
+    .wrapper {
+        padding: 48px 16px 40px;
+    }
+
+    .bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .social-list {
+        margin-top: 12px;
+        margin-left: unset;
+    }
 }

@@ -2,10 +2,12 @@ import MDEditor from '@uiw/react-md-editor';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
-import { useParams } from 'react-router-dom';
+import MediaQuery from 'react-responsive';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import blogApi from '~/api/blogApi';
 import TopicsList from '~/components/TopicsList';
+import config from '~/config';
 import BlogContent from './BlogContent';
 import styles from './BlogDetail.module.scss';
 import Reaction from './components/Reaction';
@@ -19,6 +21,7 @@ function BlogDetail() {
     const { id } = useParams();
     const [postDetails, setPostDetails] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPostDetails = async () => {
@@ -28,25 +31,34 @@ function BlogDetail() {
                 setPostDetails(data);
             } catch (error) {
                 console.error(error);
+                navigate(config.routes.notFound);
             }
             setIsLoading(false);
         };
 
         fetchPostDetails();
-    }, [id]);
+    }, [id, navigate]);
 
     return (
         <div className={cx('wrapper')}>
             {!isLoading && postDetails && (
-                <Container style={{ height: '100%' }}>
-                    <Row style={{ height: '100%' }}>
-                        <Col sm={0} md={0} lg={2} style={{ height: '100%' }}>
-                            <UserDetails
-                                postDetails={postDetails}
-                                setPostDetails={setPostDetails}
-                            />
-                        </Col>
-                        <Col sm={12} md={12} lg={8} style={{ height: '100%' }}>
+                <Container style={{ height: '100%' }} className={cx('container')}>
+                    <Row style={{ height: '100%' }} className={cx('row')}>
+                        <MediaQuery minWidth={1113}>
+                            <Col sm={0} md={0} lg={2} style={{ height: '100%' }}>
+                                <UserDetails
+                                    postDetails={postDetails}
+                                    setPostDetails={setPostDetails}
+                                />
+                            </Col>
+                        </MediaQuery>
+                        <Col
+                            sm={12}
+                            md={12}
+                            lg={8}
+                            style={{ height: '100%' }}
+                            className={cx('rightLayout')}
+                        >
                             <div className={cx('content')}>
                                 <BlogContent postDetails={postDetails} />
 

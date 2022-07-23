@@ -12,3 +12,21 @@
     margin-bottom: 60px;
     padding: 8px 44px 0;
 }
+
+@media (max-width: 1023px) {
+    .withSidebarContent {
+        max-width: 100%;
+        padding: 0 32px;
+    }
+
+    .content {
+        margin-bottom: 48px;
+        padding: 0;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 739px) {
+    .withSidebarContent {
+        padding: 0 16px;
+    }
+}

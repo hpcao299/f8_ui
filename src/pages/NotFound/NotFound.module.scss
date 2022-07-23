@@ -9,6 +9,7 @@
             padding-bottom: 0.4em;
             text-align: center;
             font-weight: 500;
+            font-size: 1.5rem;
             line-height: 1.6;
         }
     }
@@ -98,5 +99,17 @@
 
     &:hover {
         color: var(--primary-color) !important;
+    }
+}
+
+@media (max-width: 739px) {
+    .header,
+    .copyright {
+        display: none;
+    }
+
+    .content {
+        padding: 0 16px;
+        width: 100%;
     }
 }

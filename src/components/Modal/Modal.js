@@ -5,18 +5,18 @@ import styles from './Modal.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Modal({ isShown, hideModal, children }) {
+function Modal({ isShown, hideModal, duration = 200, children }) {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         if (!isShown) {
             setTimeout(() => {
                 setShowModal(false);
-            }, 200);
+            }, duration);
         } else {
             setShowModal(true);
         }
-    }, [isShown]);
+    }, [isShown, duration]);
 
     return (
         <>
@@ -40,6 +40,7 @@ function Modal({ isShown, hideModal, children }) {
 Modal.propTypes = {
     isShown: PropTypes.bool.isRequired,
     hideModal: PropTypes.func.isRequired,
+    duration: PropTypes.number,
     children: PropTypes.node.isRequired,
 };
 

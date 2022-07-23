@@ -3,12 +3,13 @@
     background-color: #fff;
     border: 2px solid #dce0e3;
     border-radius: 44px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: var(--height);
     line-height: var(--height);
     padding-left: 16px;
     position: relative;
-    text-align: center;
     width: 320px;
 
     &.disabled {
@@ -42,5 +43,11 @@
         font-size: 1.4rem;
         font-weight: 600;
         line-height: 40px;
+    }
+}
+
+@media (max-width: 739px) {
+    .button {
+        width: 275px;
     }
 }

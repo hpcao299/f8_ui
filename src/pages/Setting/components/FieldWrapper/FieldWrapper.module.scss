@@ -3,3 +3,10 @@
     padding: 16px 0 20px;
     display: flex;
 }
+
+@media (min-width: 0) and (max-width: 739px) {
+    .wrapper {
+        display: block;
+        padding: 25px 0 20px;
+    }
+}

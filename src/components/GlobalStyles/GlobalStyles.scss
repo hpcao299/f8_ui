@@ -148,3 +148,27 @@ svg:not(:host).svg-inline--fa {
     line-height: var(--line-height, 2);
     background-color: transparent;
 }
+
+.wmde-markdown {
+    font-family: var(--font-family) !important;
+}
+
+// React grid system styles
+@media (min-width: 1024px) and (max-width: 1239px) {
+    .grid-container {
+        width: 984px !important;
+        flex: unset !important;
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+    .grid-container {
+        max-width: 644px !important;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 739px) {
+    .grid-container {
+        max-width: 100% !important;
+    }
+}

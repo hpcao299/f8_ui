@@ -45,6 +45,7 @@ $bg-auth-img: url('/src/assets/images/f8-bg-auth.png');
     font-size: 2.8rem;
     font-weight: 700;
     line-height: 1.4;
+    margin: 18px 0;
 }
 
 .body {
@@ -70,5 +71,11 @@ $bg-auth-img: url('/src/assets/images/f8-bg-auth.png');
 
     span {
         margin: 0 8px;
+    }
+}
+
+@media (max-width: 739px) {
+    .content {
+        min-height: 577px;
     }
 }

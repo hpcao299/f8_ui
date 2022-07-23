@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { Col, Container, Row } from 'react-grid-system';
+import MediaQuery from 'react-responsive';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -42,6 +43,10 @@ function BlogPage() {
             {!isLoading && (
                 <>
                     <BlogTitle />
+
+                    <MediaQuery maxWidth={1023}>
+                        <TopicsList hideCurrentTopic />
+                    </MediaQuery>
 
                     <div className={cx('body')}>
                         <Container className={cx('container')} fluid>

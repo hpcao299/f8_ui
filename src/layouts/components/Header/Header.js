@@ -1,13 +1,15 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import MediaQuery from 'react-responsive';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Button from '~/components/Button';
 import UserMenu from '~/components/UserMenu';
 import config from '~/config';
-import { auth } from '~/config/firebase';
+import MobileMenu from '../MobileMenu';
 import Search from '../Search';
 import styles from './Header.module.scss';
 import Logo from './Logo';
@@ -44,12 +46,6 @@ function Header({
         return () => window.removeEventListener('scroll', handleScrollWindow);
     }, [movingHeader]);
 
-    const handleLogout = () => {
-        auth.signOut().then(() => {
-            navigate(config.routes.signin);
-        });
-    };
-
     const USER_MENU = [
         {
             title: 'Trang cá nhân',
@@ -78,7 +74,6 @@ function Header({
         {
             title: 'Đăng xuất',
             to: config.routes.logout,
-            onClick: handleLogout,
         },
     ];
 
@@ -88,27 +83,44 @@ function Header({
 
     return (
         <header className={cx('wrapper', { transparent, moveOut: direction === 'disappear' })}>
-            <Logo />
+            <MediaQuery minWidth={1024}>
+                <Logo />
+            </MediaQuery>
+
+            <MediaQuery maxWidth={1023}>
+                <MobileMenu />
+            </MediaQuery>
 
             {!hideSearch && (
-                <div className={cx('body')}>
-                    <Search />
-                </div>
+                <MediaQuery minWidth={739}>
+                    <div className={cx('body')}>
+                        <Search />
+                    </div>
+                </MediaQuery>
             )}
 
             <div className={cx('actions')}>
+                <MediaQuery maxWidth={739}>
+                    <Link to={config.routes.search} className={cx('actionBtn')}>
+                        <FaSearch />
+                    </Link>
+                </MediaQuery>
                 {currentUser ? (
                     <>
                         {showPublishBtn && <PublishBtn />}
                         {!transparent && (
-                            <Link to={config.routes.myDraftsPost} className={cx('myPosts')}>
-                                Bài viết của tôi
-                            </Link>
+                            <MediaQuery minWidth={739}>
+                                <Link to={config.routes.myDraftsPost} className={cx('myPosts')}>
+                                    Bài viết của tôi
+                                </Link>
+                            </MediaQuery>
                         )}
-                        <UserMenu items={USER_MENU} />
+                        <MediaQuery minWidth={1024}>
+                            <UserMenu items={USER_MENU} />
+                        </MediaQuery>
                     </>
                 ) : (
-                    <Button to={config.routes.signin} primary>
+                    <Button to={config.routes.signin} primary className={cx('loginBtn')}>
                         Đăng nhập
                     </Button>
                 )}

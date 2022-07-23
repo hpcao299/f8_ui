@@ -10,13 +10,8 @@ const cx = classNames.bind(styles);
 function PostItem({ post }) {
     return (
         <div className={cx('post')}>
-            <Link to={`/blog/details/${post.id}/${post.slug}`}>
-                <div className={cx('thumb')}>
-                    <Image
-                        src={post.image_url}
-                        alt={post.meta_title ? post.meta_title : post.title}
-                    />
-                </div>
+            <Link to={`/blog/details/${post.id}/${post.slug}`} className={cx('thumb')}>
+                <Image src={post.image_url} alt={post.meta_title ? post.meta_title : post.title} />
             </Link>
             <div className={cx('info')}>
                 <Link to={`/blog/details/${post.id}/${post.slug}`}>

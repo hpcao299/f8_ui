@@ -38,3 +38,13 @@
 .rightLayout {
     height: 100%;
 }
+
+@media (min-width: 0) and (max-width: 1023px) {
+    .top {
+        margin-bottom: 48px;
+    }
+
+    .leftLayout {
+        padding: 0;
+    }
+}

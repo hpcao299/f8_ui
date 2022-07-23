@@ -23,13 +23,13 @@ function SettingPage() {
     }, []);
 
     return (
-        <Container style={{ maxWidth: '1100px', padding: 0, flex: 1 }}>
+        <Container style={{ maxWidth: '1100px', padding: 0, flex: 1 }} className="grid-container">
             <Helmet>
                 <title>{config.titles.setting}</title>
             </Helmet>
 
-            <Row>
-                <Col lg={9} md={12} sm={12}>
+            <Row className={styles.row}>
+                <Col lg={10} md={12} sm={12} className={styles.col}>
                     {userProfile && (
                         <div className={styles.wrapper}>
                             <h1 className={styles.heading}>Cài đặt</h1>

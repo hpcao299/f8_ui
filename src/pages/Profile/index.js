@@ -1,13 +1,14 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import userApi from '~/api/userApi';
 import images from '~/assets/images';
 import Box from '~/components/Box';
 import { UserGroupIcon } from '~/components/Icons';
 import Image from '~/components/Image';
+import config from '~/config';
 import { momentFromNow } from '~/utils';
 import SocialLink from './components/SocialLink';
 import PostItem from './PostItem';
@@ -20,6 +21,7 @@ function ProfilePage() {
     const [postsList, setPostsList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProfilePosts = async () => {
@@ -30,12 +32,13 @@ function ProfilePage() {
                 setUser(data.user);
             } catch (error) {
                 console.error(error);
+                navigate(config.routes.notFound);
             }
             setIsLoading(false);
         };
 
         fetchProfilePosts();
-    }, [id]);
+    }, [id, navigate]);
 
     const SOCIAL_LINK_LIST = [
         {
@@ -61,7 +64,7 @@ function ProfilePage() {
     ];
 
     return !isLoading ? (
-        <Container style={{ padding: '0 20px' }}>
+        <Container style={{ padding: 0 }} className={cx('container', 'grid-container')}>
             <div className={cx('cover')} style={{ backgroundImage: `url(${images.coverProfile})` }}>
                 <div className={cx('user')}>
                     <div className={cx('user-avatar')}>
@@ -72,10 +75,10 @@ function ProfilePage() {
                     </div>
                 </div>
             </div>
-            <div className={cx('container')}>
-                <Container style={{ padding: 0 }}>
+            <div className={cx('wrapper')}>
+                <Container style={{ padding: 0, maxWidth: '100%' }}>
                     <Row gutterWidth={24}>
-                        <Col sm={12} md={12} lg={5}>
+                        <Col sm={12} md={12} lg={12} xl={5}>
                             <Box title="Giới thiệu">
                                 <div className={cx('bio')}>{user.bio}</div>
                                 <div className={cx('participate-time')}>
@@ -92,11 +95,13 @@ function ProfilePage() {
                                 ))}
                             </Box>
                         </Col>
-                        <Col sm={12} md={12} lg={7}>
+                        <Col sm={12} md={12} lg={12} xl={7}>
                             <Box title="Các bài viết đã đăng">
-                                {postsList.map(post => (
-                                    <PostItem key={post.id} post={post} />
-                                ))}
+                                {postsList.length > 0 ? (
+                                    postsList.map(post => <PostItem key={post.id} post={post} />)
+                                ) : (
+                                    <p className={cx('msg')}>Người dùng chưa đăng bài viết nào</p>
+                                )}
                             </Box>
                         </Col>
                     </Row>

@@ -3,7 +3,7 @@ import Button from '~/components/Button';
 
 function FieldButtons({ isEdit, setIsEdit, handleCancel, handleSubmit }) {
     return (
-        <div className="d-flex">
+        <>
             {isEdit ? (
                 <>
                     <Button fieldButtonSave onClick={handleSubmit}>
@@ -18,7 +18,7 @@ function FieldButtons({ isEdit, setIsEdit, handleCancel, handleSubmit }) {
                     Chỉnh sửa
                 </Button>
             )}
-        </div>
+        </>
     );
 }
 

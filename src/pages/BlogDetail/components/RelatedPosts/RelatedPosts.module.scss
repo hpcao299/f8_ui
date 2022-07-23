@@ -67,3 +67,9 @@
     font-weight: 500;
     padding: 32px 0 48px;
 }
+
+@media (min-width: 0) and (max-width: 739px) {
+    .photo {
+        height: 240px;
+    }
+}

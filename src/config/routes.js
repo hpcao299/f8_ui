@@ -8,14 +8,15 @@ const routes = {
     blogDetails: '/blog/details/:id/:slug',
     writeBlog: '/new-post',
     editBlog: '/post/:blogId/edit',
+    search: '/search',
 
     profile: '/:id/:username',
     myDraftsPost: '/me/posts/drafts',
     myPublishedPost: '/me/posts/published',
     settings: '/settings',
 
-    signin: '/a/signin',
-    logout: '/a/logout',
+    signin: '/auth/signin',
+    logout: '/auth/logout',
 
     notFound: '/not-found',
 };

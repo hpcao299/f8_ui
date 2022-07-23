@@ -26,7 +26,7 @@
     width: 100%;
 
     &::placeholder {
-        color: #e3e3e3;
+        color: rgba(0, 0, 0, 0.45);
     }
 }
 
@@ -36,4 +36,18 @@
     font-weight: 300;
     line-height: 2rem;
     margin: 12px 0;
+}
+
+.fieldBtns {
+    display: flex;
+}
+
+@media (min-width: 0) and (max-width: 739px) {
+    .fieldBtns {
+        margin-top: 20px;
+    }
+
+    .input {
+        margin-bottom: 2px;
+    }
 }

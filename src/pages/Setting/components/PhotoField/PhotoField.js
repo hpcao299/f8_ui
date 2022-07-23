@@ -52,12 +52,14 @@ function PhotoField({ data, isEditable }) {
             </div>
 
             {isEditable && (
-                <FieldButtons
-                    isEdit={isEdit}
-                    setIsEdit={setIsEdit}
-                    handleCancel={handleCancel}
-                    handleSubmit={handleSubmit}
-                />
+                <div className={cx('fieldBtns')}>
+                    <FieldButtons
+                        isEdit={isEdit}
+                        setIsEdit={setIsEdit}
+                        handleCancel={handleCancel}
+                        handleSubmit={handleSubmit}
+                    />
+                </div>
             )}
         </>
     );

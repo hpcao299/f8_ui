@@ -89,6 +89,20 @@
     font-weight: 600;
 }
 
+.actionBtn {
+    padding: 8px 12px;
+    position: relative;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+
+    svg {
+        color: #707070;
+        font-size: 1.8rem;
+    }
+}
+
 .myPosts {
     margin-right: 16px;
     padding: 8px;
@@ -105,4 +119,28 @@
 .publishBtn {
     margin-right: 16px;
     font-weight: 400;
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+    .wrapper {
+        padding: 0 32px;
+    }
+
+    .myPosts {
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 0) and (max-width: 739px) {
+    .wrapper {
+        padding: 0 16px;
+    }
+
+    .actions {
+        flex: 5 1;
+    }
+
+    .loginBtn {
+        margin-left: 16px;
+    }
 }

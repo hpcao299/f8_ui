@@ -11,9 +11,9 @@ const cx = classNames.bind(styles);
 function Footer() {
     return (
         <footer className={cx('wrapper')}>
-            <Container>
+            <Container style={{ padding: 0 }} className={cx('container')}>
                 <Row gutterWidth={24}>
-                    <Col sm={3}>
+                    <Col sm={12} md={6} lg={6} xl={3}>
                         <div className={cx('column')}>
                             <div>
                                 <div className={cx('logo')}>
@@ -54,7 +54,7 @@ function Footer() {
                             </div>
                         </div>
                     </Col>
-                    <Col sm={3}>
+                    <Col sm={12} md={6} lg={6} xl={3}>
                         <div className={cx('column')}>
                             <div>
                                 <h3 className={cx('heading')}>Về F8</h3>
@@ -72,7 +72,7 @@ function Footer() {
                             </div>
                         </div>
                     </Col>
-                    <Col sm={3}>
+                    <Col sm={12} md={6} lg={6} xl={3}>
                         <div className={cx('column')}>
                             <div>
                                 <h3 className={cx('heading')}>Hỗ trợ</h3>
@@ -90,7 +90,7 @@ function Footer() {
                             </div>
                         </div>
                     </Col>
-                    <Col sm={3}>
+                    <Col sm={12} md={6} lg={6} xl={3}>
                         <div className={cx('column')}>
                             <div>
                                 <h3 className={cx('heading')}>
@@ -108,39 +108,37 @@ function Footer() {
                         </div>
                     </Col>
                 </Row>
-                <Row>
-                    <div className={cx('bottom')}>
-                        <p className={cx('copyright')}>
-                            © 2022 F8 - Nền tảng học lập trình số 1 Việt Nam
-                        </p>
-                        <div className={cx('social-list')}>
-                            <a
-                                href="https://www.youtube.com/c/F8VNOfficial/"
-                                target="_blank"
-                                rel="noreferrer"
-                                className={cx('social-item', 'youtube-icon')}
-                            >
-                                <YoutubeIcon />
-                            </a>
-                            <a
-                                href="https://www.facebook.com/groups/f8official/"
-                                target="_blank"
-                                rel="noreferrer"
-                                className={cx('social-item', 'facebook-icon')}
-                            >
-                                <FacebookIcon />
-                            </a>
-                            <a
-                                href="https://www.tiktok.com/@f8official"
-                                target="_blank"
-                                rel="noreferrer"
-                                className={cx('social-item', 'tiktok-icon')}
-                            >
-                                <TikTokIcon />
-                            </a>
-                        </div>
+                <div className={cx('bottom')}>
+                    <p className={cx('copyright')}>
+                        © 2022 F8 - Nền tảng học lập trình số 1 Việt Nam
+                    </p>
+                    <div className={cx('social-list')}>
+                        <a
+                            href="https://www.youtube.com/c/F8VNOfficial/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className={cx('social-item', 'youtube-icon')}
+                        >
+                            <YoutubeIcon />
+                        </a>
+                        <a
+                            href="https://www.facebook.com/groups/f8official/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className={cx('social-item', 'facebook-icon')}
+                        >
+                            <FacebookIcon />
+                        </a>
+                        <a
+                            href="https://www.tiktok.com/@f8official"
+                            target="_blank"
+                            rel="noreferrer"
+                            className={cx('social-item', 'tiktok-icon')}
+                        >
+                            <TikTokIcon />
+                        </a>
                     </div>
-                </Row>
+                </div>
 
                 <div className={cx('space')}></div>
             </Container>
