@@ -5,3 +5,125 @@
     padding: 8px 0;
     color: #707070;
 }
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    width: 100vw;
+}
+
+.body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    width: 60%;
+    background-color: var(--white-color);
+
+    &.slideIn {
+        animation: slideIn ease 0.5s;
+        -webkit-animation: slideIn ease 0.5s;
+    }
+
+    &.slideOut {
+        animation: slideOut ease 0.5s;
+        -webkit-animation: slideOut ease 0.5s;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
+.content {
+    font-size: 1.6rem;
+    max-height: 100%;
+    overflow-y: auto;
+    padding: 16px 0 0 32px;
+}
+
+.user {
+    padding: 32px 0 32px 20px;
+    margin-bottom: 24px;
+}
+
+.avatar {
+    border-radius: 50%;
+    height: 96px;
+    width: 96px;
+}
+
+.user-name {
+    font-size: 1.6rem;
+    margin: 12px 0 0;
+}
+
+.list {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.079);
+    font-size: 1.6rem;
+    padding: 8px 0;
+    line-height: 20px;
+    list-style-type: none;
+    margin: 0 0 12px;
+
+    li em {
+        color: #757575;
+        display: inline-block;
+        margin-right: 16px;
+        text-align: center;
+        width: 20px;
+    }
+
+    li a {
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        color: #333;
+        cursor: pointer;
+        font-weight: 500;
+        padding: 20px 0 20px 20px;
+        transition: 0.3s;
+        display: block;
+    }
+
+    li a.active,
+    li a:hover {
+        background-color: #f0f0f0;
+        color: #292929;
+    }
+}
+
+@media (min-width: 0) and (max-width: 739px) {
+    .body {
+        width: 80%;
+    }
+
+    .content {
+        padding: 16px 0 0 16px;
+    }
+
+    .list li a {
+        padding: 16px 0 16px 16px;
+    }
+
+    .user {
+        padding: 16px 0 0 20px;
+    }
+}

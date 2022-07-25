@@ -1,10 +1,11 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import blogApi from '~/api/blogApi';
 
+import blogApi from '~/api/blogApi';
 import Checkbox from '~/components/Checkbox';
 import Select from '~/components/Select';
 import config from '~/config';
@@ -17,7 +18,7 @@ import styles from './PublishPreview.module.scss';
 
 const cx = classNames.bind(styles);
 
-function PublishPreview() {
+function PublishPreview({ hideModal }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { topics } = useSelector(state => state.topic);
@@ -50,51 +51,61 @@ function PublishPreview() {
     };
 
     return (
-        <Container style={{ maxWidth: 1224 }}>
-            <Row gutterWidth={24}>
-                <Col sm={12} md={12} lg={6}>
-                    <div className={cx('leftLayout')}>
-                        <h3>Xem trước</h3>
-                        <div className={cx('img')}>
-                            <label htmlFor="thumb"></label>
-                            <input type="file" accept="image/*" hidden id="thumb" />
-                            <p>
-                                Thêm một ảnh đại diện hấp dẫn sẽ giúp bài viết của bạn cuốn hút hơn
-                                với độc giả.
-                            </p>
-                            <div>Kéo thả ảnh vào đây, hoặc bấm để chọn ảnh</div>
+        <div className={cx('content')}>
+            <div className={cx('close')} onClick={hideModal}>
+                x
+            </div>
+
+            <Container style={{ maxWidth: 1224 }}>
+                <Row gutterWidth={24}>
+                    <Col sm={12} md={12} lg={6}>
+                        <div className={cx('leftLayout')}>
+                            <h3>Xem trước</h3>
+                            <div className={cx('img')}>
+                                <label htmlFor="thumb"></label>
+                                <input type="file" accept="image/*" hidden id="thumb" />
+                                <p>
+                                    Thêm một ảnh đại diện hấp dẫn sẽ giúp bài viết của bạn cuốn hút
+                                    hơn với độc giả.
+                                </p>
+                                <div>Kéo thả ảnh vào đây, hoặc bấm để chọn ảnh</div>
+                            </div>
+                            <MetaDetailsPreview />
                         </div>
-                        <MetaDetailsPreview />
-                    </div>
-                </Col>
-                <Col sm={12} md={12} lg={6}>
-                    <div className={cx('rightLayout')}>
-                        <div>
-                            <p>Chọn đề tài để độc giả biết bài viết của bạn nói về điều gì</p>
-                            <Select
-                                name="topics"
-                                options={getTopicOptions()}
-                                onChange={handleSelectChange}
-                            />
+                    </Col>
+                    <Col sm={12} md={12} lg={6}>
+                        <div className={cx('rightLayout')}>
+                            <div>
+                                <p>Chọn đề tài để độc giả biết bài viết của bạn nói về điều gì</p>
+                                <Select
+                                    name="topics"
+                                    options={getTopicOptions()}
+                                    onChange={handleSelectChange}
+                                />
+                            </div>
+                            <div className={cx('allowRecommend')}>
+                                <Checkbox text="Đề xuất bài viết của bạn đến các độc giả quan tâm tới nội dung này." />
+                            </div>
+                            <div className={cx('actions')}>
+                                <button
+                                    className={cx('publishBtn', {
+                                        disabled: status === 'loading',
+                                    })}
+                                    onClick={handlePublish}
+                                >
+                                    Xuất bản ngay
+                                </button>
+                            </div>
                         </div>
-                        <div className={cx('allowRecommend')}>
-                            <Checkbox text="Đề xuất bài viết của bạn đến các độc giả quan tâm tới nội dung này." />
-                        </div>
-                        <div className={cx('actions')}>
-                            <button
-                                className={cx('publishBtn', {
-                                    disabled: status === 'loading',
-                                })}
-                                onClick={handlePublish}
-                            >
-                                Xuất bản ngay
-                            </button>
-                        </div>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
     );
 }
+
+PublishPreview.propTypes = {
+    hideModal: PropTypes.func.isRequired,
+};
 
 export default PublishPreview;

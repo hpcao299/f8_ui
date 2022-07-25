@@ -5,7 +5,7 @@ import styles from './Modal.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Modal({ isShown, hideModal, duration = 200, children }) {
+function Modal({ isShown, className, duration = 200, children }) {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
@@ -22,15 +22,15 @@ function Modal({ isShown, hideModal, duration = 200, children }) {
         <>
             {showModal && (
                 <div
-                    className={cx('wrapper', {
+                    style={{
+                        animationDuration: `${duration}ms`,
+                    }}
+                    className={cx('wrapper', className, {
                         fadeIn: showModal,
                         fadeOut: !isShown,
                     })}
                 >
-                    <div className={cx('close')} onClick={hideModal}>
-                        x
-                    </div>
-                    <div className={cx('content')}>{children}</div>
+                    {children}
                 </div>
             )}
         </>
@@ -39,9 +39,9 @@ function Modal({ isShown, hideModal, duration = 200, children }) {
 
 Modal.propTypes = {
     isShown: PropTypes.bool.isRequired,
-    hideModal: PropTypes.func.isRequired,
     duration: PropTypes.number,
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
 };
 
 export default Modal;

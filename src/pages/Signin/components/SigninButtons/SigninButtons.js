@@ -44,7 +44,7 @@ function SigninButtons() {
                 <img src={images.facebook} alt="Facebook" />
                 <span>Tiếp tục với Facebook</span>
             </div>
-            <div className={cx('button')} onClick={signInWithGithub}>
+            <div className={cx('button', 'disabled')} onClick={signInWithGithub}>
                 <img src={images.github} alt="Github" />
                 <span>Tiếp tục với Github</span>
             </div>

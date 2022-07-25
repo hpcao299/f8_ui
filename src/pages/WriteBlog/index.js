@@ -78,8 +78,8 @@ function WriteBlogPage() {
 
             {status !== 'loading' && <ContentEditor title={title} content={content} />}
 
-            <Modal isShown={isShownPublishPreview} hideModal={handleHideModal}>
-                <PublishPreview />
+            <Modal isShown={isShownPublishPreview} className={cx('modal')}>
+                <PublishPreview hideModal={handleHideModal} />
             </Modal>
         </div>
     );

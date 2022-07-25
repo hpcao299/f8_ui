@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import MediaQuery from 'react-responsive';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Button from '~/components/Button';
 import UserMenu from '~/components/UserMenu';
@@ -24,7 +24,6 @@ function Header({
     movingHeader = false,
 }) {
     const { currentUser } = useSelector(state => state.auth);
-    const navigate = useNavigate();
     const [direction, setDirection] = useState('appear');
 
     useEffect(() => {

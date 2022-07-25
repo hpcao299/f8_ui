@@ -4,17 +4,20 @@
     overflow-x: hidden;
     overflow-y: auto;
     position: fixed;
-    background-color: var(--white-color);
     z-index: 9999;
 
     &.fadeIn {
-        animation: fadeIn 0.2s ease;
-        -webkit-animation: fadeIn 0.2s ease;
+        animation-name: fadeIn;
+        -webkit-animation-name: fadeIn;
+        animation-timing-function: ease;
+        -webkit-animation-timing-function: ease;
     }
 
     &.fadeOut {
-        animation: fadeOut 0.2s ease;
-        -webkit-animation: fadeOut 0.2s ease;
+        animation-name: fadeOut;
+        -webkit-animation-name: fadeOut;
+        animation-timing-function: ease;
+        -webkit-animation-timing-function: ease;
     }
 }
 
@@ -34,26 +37,4 @@
     to {
         opacity: 0;
     }
-}
-
-.close {
-    color: var(--desc-color);
-    font-size: 2.4rem;
-    padding: 12px 24px 24px;
-    position: fixed;
-    right: 8px;
-    top: 0;
-    z-index: 99991;
-
-    &:hover {
-        color: var(--black-color);
-        cursor: pointer;
-    }
-}
-
-.content {
-    padding: 100px 0;
-    position: relative;
-    margin: auto;
-    width: 100%;
 }
