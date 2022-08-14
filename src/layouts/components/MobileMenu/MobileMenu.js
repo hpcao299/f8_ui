@@ -36,7 +36,7 @@ function MobileMenu() {
                 icon: RoadIcon,
             },
             {
-                title: 'Khoá hóc',
+                title: 'Khoá học',
                 to: config.routes.courses,
                 icon: LightBulbIcon,
             },
