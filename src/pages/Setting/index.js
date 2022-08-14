@@ -15,7 +15,7 @@ function SettingPage() {
                 const { data } = await settingApi.getProfile();
                 setUserProfile(data);
             } catch (err) {
-                console.log(err);
+                console.error(err);
             }
         };
 

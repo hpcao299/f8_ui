@@ -50,7 +50,6 @@ function MobileMenu() {
 
     useEffect(() => {
         const handleOutsideClick = e => {
-            console.log('click');
             if (menuBodyRef.current && !menuBodyRef.current.contains(e.target)) {
                 setIsShown(false);
             }

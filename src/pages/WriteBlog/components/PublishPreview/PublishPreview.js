@@ -45,7 +45,7 @@ function PublishPreview({ hideModal }) {
             navigate(config.routes.myPublishedPost);
         } catch (error) {
             dispatch(addNotification(messages.publishPostFailed));
-            console.log(error);
+            console.error(error);
         }
         dispatch(endApi());
     };
