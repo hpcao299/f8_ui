@@ -15,7 +15,7 @@ const cx = classNames.bind(styles);
 
 function BlogPage() {
     const [blogsList, setBlogsList] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const { topicId } = useParams();
 
     useEffect(() => {

@@ -13,7 +13,7 @@ function BlogsList({ data }) {
 
     return (
         <>
-            {data.length > 0 ? (
+            {data?.length > 0 ? (
                 renderPosts()
             ) : (
                 <p className={cx('msg')}>
