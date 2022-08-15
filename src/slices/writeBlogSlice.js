@@ -32,14 +32,14 @@ const writeBlogSlice = createSlice({
         setTopicId(state, action) {
             state.topic_id = action.payload;
         },
-        runApi(state, action) {
+        runApi(state) {
             state.status = 'loading';
         },
-        endApi(state, action) {
+        endApi(state) {
             state.status = 'idle';
             state.isShownPublishPreview = false;
         },
-        resetAll(state, action) {
+        resetAll(state) {
             return {
                 title: '',
                 content: '',
@@ -57,10 +57,13 @@ const writeBlogSlice = createSlice({
             state.isShownPublishPreview = false;
             state.topic_id = 2;
         },
+        writingBlog(state) {
+            state.status = 'writing';
+        },
     },
     extraReducers: build => {
         build
-            .addCase(fetchPostForEdit.pending, (state, action) => {
+            .addCase(fetchPostForEdit.pending, state => {
                 state.status = 'loading';
             })
             .addCase(fetchPostForEdit.fulfilled, (state, action) => {
@@ -70,8 +73,11 @@ const writeBlogSlice = createSlice({
                 state.meta_description = checkDataExists(action?.payload?.meta_description);
                 state.status = 'idle';
             })
-            .addCase(fetchPostForEdit.rejected, (state, action) => {
+            .addCase(fetchPostForEdit.rejected, state => {
                 state.status = 'failed';
+            })
+            .addCase(editPost.fulfilled, state => {
+                state.status = 'idle';
             });
     },
 });
@@ -131,5 +137,6 @@ export const {
     resetAll,
     runApi,
     endApi,
+    writingBlog,
 } = writeBlogSlice.actions;
 export default writeBlogSlice.reducer;

@@ -6,12 +6,12 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import ContentEditable from '~/components/ContentEditable';
 import config from '~/config';
-import { setContent, setTitle } from '~/slices/writeBlogSlice';
+import { setContent, setTitle, writingBlog } from '~/slices/writeBlogSlice';
 import styles from './ContentEditor.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ContentEditor({ title, content }) {
+function ContentEditor({ title, content, showPrompt, confirmNavigation, cancelNavigation }) {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -22,12 +22,25 @@ function ContentEditor({ title, content }) {
         }
     }, [title]);
 
+    useEffect(() => {
+        if (showPrompt) {
+            // eslint-disable-next-line no-restricted-globals
+            if (confirm('You have unsaved changes. Are you sure want to leave this page?')) {
+                confirmNavigation();
+            } else {
+                cancelNavigation();
+            }
+        }
+    }, [cancelNavigation, confirmNavigation, showPrompt]);
+
     const handleChangeTitle = e => {
         dispatch(setTitle(e.target.value));
+        dispatch(writingBlog());
     };
 
     const handleChangeValue = str => {
         dispatch(setContent(str));
+        dispatch(writingBlog());
     };
 
     return (

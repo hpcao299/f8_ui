@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { useDebounce } from 'use-debounce';
 
 import Modal from '~/components/Modal';
 import config from '~/config';
+import { useCallbackPrompt } from '~/hooks/useCallbackPrompt';
 import {
     editPost,
     fetchPostForEdit,
@@ -29,6 +30,12 @@ function WriteBlogPage() {
     const dispatch = useDispatch();
     const { blogId } = useParams();
 
+    // state for callback prompt when user is writing blog
+    // but app hasn't submit edited content yet
+    // because of the debounced time
+    const [showDialog, setShowDialog] = useState(false);
+    const [showPrompt, confirmNavigation, cancelNavigation] = useCallbackPrompt(showDialog);
+
     useEffect(() => {
         // If users write blog on page /post/:blogId/edit
         // fetch their posts details
@@ -42,8 +49,12 @@ function WriteBlogPage() {
     }, [blogId, dispatch]);
 
     useEffect(() => {
-        if (status === 'failed') {
+        if (status === 'writing') {
+            setShowDialog(true);
+        } else if (status === 'failed') {
             navigate(config.routes.notFound);
+        } else {
+            setShowDialog(false);
         }
     }, [status, navigate]);
 
@@ -76,7 +87,15 @@ function WriteBlogPage() {
                 <title>{config.titles.writeBlog}</title>
             </Helmet>
 
-            {status !== 'loading' && <ContentEditor title={title} content={content} />}
+            {status !== 'loading' && (
+                <ContentEditor
+                    title={title}
+                    content={content}
+                    showPrompt={showPrompt}
+                    confirmNavigation={confirmNavigation}
+                    cancelNavigation={cancelNavigation}
+                />
+            )}
 
             <Modal isShown={isShownPublishPreview} className={cx('modal')}>
                 <PublishPreview hideModal={handleHideModal} />
