@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { memo } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -49,4 +50,4 @@ function BlogTitle() {
     );
 }
 
-export default BlogTitle;
+export default memo(BlogTitle);

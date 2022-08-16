@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import config from '~/config';
@@ -26,7 +27,7 @@ function BlogsList({ data }) {
 }
 
 BlogsList.propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.array.isRequired,
 };
 
-export default BlogsList;
+export default memo(BlogsList);
