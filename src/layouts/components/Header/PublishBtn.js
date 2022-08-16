@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import Button from '~/components/Button';
 import { showPublishPreview } from '~/slices/writeBlogSlice';
 import styles from './Header.module.scss';
@@ -8,6 +9,7 @@ const cx = classNames.bind(styles);
 
 function PublishBtn() {
     const { title, content } = useSelector(state => state.writeBlog);
+    const { blogId } = useParams();
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -21,7 +23,7 @@ function PublishBtn() {
             primary
             disabled={!title || !content}
         >
-            Xuất bản
+            {blogId ? 'Chỉnh sửa' : 'Xuất bản'}
         </Button>
     );
 }

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import styles from './ContentEditable.module.scss';
 
 const cx = classNames.bind(styles);
@@ -42,4 +42,4 @@ ContentEditable.propTypes = {
     onChange: PropTypes.func.isRequired,
 };
 
-export default ContentEditable;
+export default memo(ContentEditable);

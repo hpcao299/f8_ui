@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import styles from './Modal.module.scss';
 
 const cx = classNames.bind(styles);
@@ -44,4 +44,4 @@ Modal.propTypes = {
     className: PropTypes.string,
 };
 
-export default Modal;
+export default memo(Modal);

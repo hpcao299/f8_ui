@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaUser } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { HomeIcon, LightBulbIcon, LogoutIcon, NewspaperIcon, RoadIcon } from '~/components/Icons';
@@ -18,6 +18,11 @@ function MobileMenu() {
 
     const MOBILE_MENU_LINK_LIST = [
         [
+            {
+                to: `/${currentUser?.id}/${currentUser?.username}`,
+                title: 'Trang cá nhân',
+                icon: FaUser,
+            },
             {
                 to: config.routes.myDraftsPost,
                 title: 'Bài viết của tôi',

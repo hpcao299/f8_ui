@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { fetchTopics } from '~/slices/topicSlice';
@@ -46,4 +46,4 @@ TopicsList.propTypes = {
     hideCurrentTopic: PropTypes.bool,
 };
 
-export default TopicsList;
+export default memo(TopicsList);

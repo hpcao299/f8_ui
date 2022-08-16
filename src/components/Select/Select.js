@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 import styles from './Select.module.scss';
 
 function Select({ options, onChange, defaultValue, ...props }) {
@@ -29,4 +30,4 @@ Select.propTypes = {
     onChange: PropTypes.func,
 };
 
-export default Select;
+export default memo(Select);
