@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useCallback, useEffect, useMemo } from 'react';
+import { memo, useCallback, useEffect, useMemo } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -117,4 +117,4 @@ PublishPreview.propTypes = {
     hideModal: PropTypes.func.isRequired,
 };
 
-export default PublishPreview;
+export default memo(PublishPreview);
