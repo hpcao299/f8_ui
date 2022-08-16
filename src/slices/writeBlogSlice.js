@@ -9,6 +9,7 @@ const initialState = {
     meta_description: '',
     topic_id: 2,
     isShownPublishPreview: false,
+    is_published: false,
     status: 'idle',
 };
 
@@ -41,7 +42,7 @@ const writeBlogSlice = createSlice({
             state.status = 'idle';
             state.isShownPublishPreview = false;
         },
-        resetAll(state) {
+        resetAll() {
             return {
                 title: '',
                 content: '',
@@ -49,6 +50,7 @@ const writeBlogSlice = createSlice({
                 meta_description: '',
                 topic_id: 2,
                 isShownPublishPreview: false,
+                is_published: false,
                 status: 'idle',
             };
         },
@@ -69,6 +71,8 @@ const writeBlogSlice = createSlice({
                 state.content = checkDataExists(action?.payload?.content);
                 state.meta_title = checkDataExists(action?.payload?.meta_title);
                 state.meta_description = checkDataExists(action?.payload?.meta_description);
+                state.is_published = action?.payload?.is_published;
+                state.topic_id = action?.payload?.topic_id || 2;
                 state.status = 'idle';
             })
             .addCase(fetchPostForEdit.rejected, state => {

@@ -22,7 +22,7 @@ function PublishPreview({ hideModal }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { topics } = useSelector(state => state.topic);
-    const { status, meta_title, meta_description, topic_id } = useSelector(
+    const { status, meta_title, meta_description, topic_id, is_published } = useSelector(
         state => state.writeBlog,
     );
     const { blogId } = useParams();
@@ -45,14 +45,22 @@ function PublishPreview({ hideModal }) {
         [topics],
     );
 
-    const handlePublish = async () => {
+    const handleSubmit = async () => {
         dispatch(runApi());
         try {
             await blogApi.publishPost({ id: blogId, meta_title, meta_description });
-            dispatch(addNotification(messages.publishPostSuccessfully));
+            dispatch(
+                addNotification(
+                    is_published ? messages.editPostSuccessfully : messages.publishPostSuccessfully,
+                ),
+            );
             navigate(config.routes.myPublishedPost);
         } catch (error) {
-            dispatch(addNotification(messages.publishPostFailed));
+            dispatch(
+                addNotification(
+                    is_published ? messages.editPostFailed : messages.publishPostFailed,
+                ),
+            );
             console.error(error);
         }
         dispatch(endApi());
@@ -100,9 +108,9 @@ function PublishPreview({ hideModal }) {
                                     className={cx('publishBtn', {
                                         disabled: status === 'loading',
                                     })}
-                                    onClick={handlePublish}
+                                    onClick={handleSubmit}
                                 >
-                                    {blogId ? 'Chỉnh sửa' : 'Xuất bản ngay'}
+                                    {is_published ? 'Chỉnh sửa' : 'Xuất bản ngay'}
                                 </button>
                             </div>
                         </div>
