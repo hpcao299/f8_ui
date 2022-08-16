@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { CheckIcon } from '../Icons';
 import styles from './Checkbox.module.scss';
 
@@ -34,4 +34,4 @@ Checkbox.propTypes = {
     text: PropTypes.string,
 };
 
-export default Checkbox;
+export default memo(Checkbox);

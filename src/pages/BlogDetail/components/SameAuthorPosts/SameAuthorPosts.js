@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import blogApi from '~/api/blogApi';
 import styles from './SameAuthorPosts.module.scss';
@@ -43,4 +43,4 @@ SameAuthorPosts.propTypes = {
     user_id: PropTypes.string,
 };
 
-export default SameAuthorPosts;
+export default memo(SameAuthorPosts);

@@ -1,7 +1,7 @@
 import MDEditor from '@uiw/react-md-editor';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import blogApi from '~/api/blogApi';
 import Image from '~/components/Image';
@@ -68,4 +68,4 @@ RelatedPosts.propTypes = {
     blog_id: PropTypes.number,
 };
 
-export default RelatedPosts;
+export default memo(RelatedPosts);

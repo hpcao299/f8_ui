@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -22,20 +22,28 @@ function PublishPreview({ hideModal }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { topics } = useSelector(state => state.topic);
-    const { status, meta_title, meta_description } = useSelector(state => state.writeBlog);
+    const { status, meta_title, meta_description, topic_id } = useSelector(
+        state => state.writeBlog,
+    );
     const { blogId } = useParams();
 
     useEffect(() => {
         dispatch(fetchTopics());
     }, [dispatch]);
 
-    const handleSelectChange = e => {
-        const topicId = e.target.value;
-        dispatch(setTopicId(topicId));
-        dispatch(selectPostTopic({ blogId, data: { id: topicId } }));
-    };
+    const handleSelectChange = useCallback(
+        e => {
+            const topicId = e.target.value;
+            dispatch(setTopicId(topicId));
+            dispatch(selectPostTopic({ blogId, data: { id: topicId } }));
+        },
+        [dispatch, blogId],
+    );
 
-    const getTopicOptions = () => topics.map(topic => ({ value: topic.id, title: topic.title }));
+    const topicOptions = useMemo(
+        () => topics.map(topic => ({ value: topic.id, title: topic.title })),
+        [topics],
+    );
 
     const handlePublish = async () => {
         dispatch(runApi());
@@ -79,8 +87,9 @@ function PublishPreview({ hideModal }) {
                                 <p>Chọn đề tài để độc giả biết bài viết của bạn nói về điều gì</p>
                                 <Select
                                     name="topics"
-                                    options={getTopicOptions()}
+                                    options={topicOptions}
                                     onChange={handleSelectChange}
+                                    defaultValue={topic_id}
                                 />
                             </div>
                             <div className={cx('allowRecommend')}>
@@ -93,7 +102,7 @@ function PublishPreview({ hideModal }) {
                                     })}
                                     onClick={handlePublish}
                                 >
-                                    Xuất bản ngay
+                                    {blogId ? 'Chỉnh sửa' : 'Xuất bản ngay'}
                                 </button>
                             </div>
                         </div>

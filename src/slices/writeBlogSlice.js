@@ -19,9 +19,11 @@ const writeBlogSlice = createSlice({
         setTitle(state, action) {
             state.title = action.payload;
             state.meta_title = action.payload;
+            state.status = 'writing';
         },
         setContent(state, action) {
             state.content = action.payload;
+            state.status = 'writing';
         },
         setMetaTitle(state, action) {
             state.meta_title = action.payload;
@@ -55,10 +57,6 @@ const writeBlogSlice = createSlice({
         },
         hidePublishPreview(state) {
             state.isShownPublishPreview = false;
-            state.topic_id = 2;
-        },
-        writingBlog(state) {
-            state.status = 'writing';
         },
     },
     extraReducers: build => {
@@ -137,6 +135,5 @@ export const {
     resetAll,
     runApi,
     endApi,
-    writingBlog,
 } = writeBlogSlice.actions;
 export default writeBlogSlice.reducer;

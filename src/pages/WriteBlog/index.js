@@ -71,6 +71,7 @@ function WriteBlogPage() {
             if (blogId) {
                 dispatch(editPost({ blogId, data: postData }));
             } else {
+                setShowDialog(false);
                 dispatch(newPost({ data: postData, handleSuccess: newPostOnSuccess }));
             }
         }
@@ -89,8 +90,6 @@ function WriteBlogPage() {
 
             {status !== 'loading' && (
                 <ContentEditor
-                    title={title}
-                    content={content}
                     showPrompt={showPrompt}
                     confirmNavigation={confirmNavigation}
                     cancelNavigation={cancelNavigation}

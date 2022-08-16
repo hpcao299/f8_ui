@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useRef } from 'react';
+import { memo, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContentEditable from '~/components/ContentEditable';
 import { setMetaDesc, setMetaTitle } from '~/slices/writeBlogSlice';
@@ -14,13 +14,19 @@ function MetaDetailsPreview() {
     const metaTitleDefault = useRef(meta_title);
     const metaDescDefault = useRef(meta_description);
 
-    const handleMetaTitleChange = e => {
-        dispatch(setMetaTitle(e.target.value));
-    };
+    const handleMetaTitleChange = useCallback(
+        e => {
+            dispatch(setMetaTitle(e.target.value));
+        },
+        [dispatch],
+    );
 
-    const handleMetaDescChange = e => {
-        dispatch(setMetaDesc(e.target.value));
-    };
+    const handleMetaDescChange = useCallback(
+        e => {
+            dispatch(setMetaDesc(e.target.value));
+        },
+        [dispatch],
+    );
 
     return (
         <>
@@ -44,4 +50,4 @@ function MetaDetailsPreview() {
     );
 }
 
-export default MetaDetailsPreview;
+export default memo(MetaDetailsPreview);

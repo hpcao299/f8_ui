@@ -1,4 +1,3 @@
-import MDEditor from '@uiw/react-md-editor';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
@@ -8,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import blogApi from '~/api/blogApi';
 import TopicsList from '~/components/TopicsList';
 import config from '~/config';
+import MDContent from '../../components/MD/MDContent';
 import BlogContent from './BlogContent';
 import styles from './BlogDetail.module.scss';
 import Reaction from './components/Reaction';
@@ -62,10 +62,7 @@ function BlogDetail() {
                             <div className={cx('content')}>
                                 <BlogContent postDetails={postDetails} />
 
-                                <MDEditor.Markdown
-                                    source={postDetails.content}
-                                    style={{ whiteSpace: 'pre-wrap' }}
-                                />
+                                <MDContent content={postDetails.content} />
 
                                 <div className={cx('body-bottom')}>
                                     <Reaction

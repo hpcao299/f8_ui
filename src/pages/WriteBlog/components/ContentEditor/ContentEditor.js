@@ -1,18 +1,20 @@
-import MDEditor from '@uiw/react-md-editor';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ContentEditable from '~/components/ContentEditable';
+import MDEditor from '~/components/MD/MDEditor';
 import config from '~/config';
-import { setContent, setTitle, writingBlog } from '~/slices/writeBlogSlice';
+import { setContent, setTitle } from '~/slices/writeBlogSlice';
 import styles from './ContentEditor.module.scss';
 
 const cx = classNames.bind(styles);
 
-function ContentEditor({ title, content, showPrompt, confirmNavigation, cancelNavigation }) {
+function ContentEditor({ showPrompt, confirmNavigation, cancelNavigation }) {
     const dispatch = useDispatch();
+    const { title, content } = useSelector(state => state.writeBlog);
+    const textareaProps = useRef({ placeholder: 'Nội dung viết ở đây', spellCheck: true });
 
     useEffect(() => {
         if (title) {
@@ -33,15 +35,19 @@ function ContentEditor({ title, content, showPrompt, confirmNavigation, cancelNa
         }
     }, [cancelNavigation, confirmNavigation, showPrompt]);
 
-    const handleChangeTitle = e => {
-        dispatch(setTitle(e.target.value));
-        dispatch(writingBlog());
-    };
+    const handleChangeTitle = useCallback(
+        e => {
+            dispatch(setTitle(e.target.value));
+        },
+        [dispatch],
+    );
 
-    const handleChangeValue = str => {
-        dispatch(setContent(str));
-        dispatch(writingBlog());
-    };
+    const handleChangeValue = useCallback(
+        str => {
+            dispatch(setContent(str));
+        },
+        [dispatch],
+    );
 
     return (
         <>
@@ -56,7 +62,7 @@ function ContentEditor({ title, content, showPrompt, confirmNavigation, cancelNa
                     value={content}
                     onChange={handleChangeValue}
                     height={window.innerHeight - 100}
-                    textareaProps={{ placeholder: 'Nội dung viết ở đây', spellCheck: true }}
+                    textareaProps={textareaProps.current}
                 />
             </div>
         </>
@@ -64,8 +70,9 @@ function ContentEditor({ title, content, showPrompt, confirmNavigation, cancelNa
 }
 
 ContentEditor.propTypes = {
-    title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    showPrompt: PropTypes.bool.isRequired,
+    confirmNavigation: PropTypes.func.isRequired,
+    cancelNavigation: PropTypes.func.isRequired,
 };
 
 export default ContentEditor;

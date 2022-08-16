@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
 import topicApi from '~/api/topicApi';
 
 const initialState = { topics: [], status: 'idle' };
@@ -17,6 +17,13 @@ const topicSlice = createSlice({
             });
     },
 });
+
+const selectAllTopics = state => state.topic.topics;
+
+export const selectCurrentTopic = createSelector(
+    [selectAllTopics, (state, topicId) => topicId],
+    (topics, topicId) => topics.find(topic => topic.id === topicId),
+);
 
 export const fetchTopics = createAsyncThunk('topic/fetchTopics', async (state, action) => {
     try {
