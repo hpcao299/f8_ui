@@ -1,0 +1,48 @@
+// MD editor
+.w-md-editor-toolbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: var(--header-height);
+    height: 35px !important;
+    z-index: 1;
+}
+
+.w-md-editor-fullscreen .w-md-editor-toolbar {
+    top: 0;
+}
+
+.w-md-editor-toolbar button {
+    margin: 0 3px !important;
+    padding: 5px !important;
+}
+
+.w-md-editor-toolbar svg {
+    width: 16px;
+    height: 16px;
+}
+
+.w-md-editor-preview {
+    height: calc(100% - 6px);
+}
+
+.wmde-markdown.wmde-markdown-color {
+    --font-size: 1.8rem;
+    --line-height: 2;
+
+    word-wrap: break-word;
+    color: #292929;
+    font-size: 1.8rem;
+    font-size: var(--font-size, 1.8rem);
+    line-height: 2;
+    line-height: var(--line-height, 2);
+    background-color: transparent;
+}
+
+.wmde-markdown {
+    font-family: var(--font-family) !important;
+}
+
+// MD Content
+.md-preview .wmde-markdown {
+    white-space: unset !important;
+}

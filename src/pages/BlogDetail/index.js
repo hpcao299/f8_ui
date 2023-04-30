@@ -59,7 +59,7 @@ function BlogDetail() {
                             style={{ height: '100%' }}
                             className={cx('rightLayout')}
                         >
-                            <div className={cx('content')}>
+                            <div className={cx('content') + ' md-preview'}>
                                 <BlogContent postDetails={postDetails} />
 
                                 <MDContent content={postDetails.content} />

@@ -1,4 +1,5 @@
 @import 'normalize.css';
+@import 'MDEditor.scss';
 
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
@@ -107,50 +108,6 @@ svg:not(:host).svg-inline--fa {
         background-color: transparent;
         border-radius: 0;
     }
-}
-
-// MD editor
-.w-md-editor-toolbar {
-    position: sticky;
-    position: -webkit-sticky;
-    top: var(--header-height);
-    height: 35px !important;
-    z-index: 1;
-}
-
-.w-md-editor-fullscreen .w-md-editor-toolbar {
-    top: 0;
-}
-
-.w-md-editor-toolbar button {
-    margin: 0 3px !important;
-    padding: 5px !important;
-}
-
-.w-md-editor-toolbar svg {
-    width: 16px;
-    height: 16px;
-}
-
-.w-md-editor-preview {
-    height: calc(100% - 6px);
-}
-
-.wmde-markdown.wmde-markdown-color {
-    --font-size: 1.8rem;
-    --line-height: 2;
-
-    word-wrap: break-word;
-    color: #292929;
-    font-size: 1.8rem;
-    font-size: var(--font-size, 1.8rem);
-    line-height: 2;
-    line-height: var(--line-height, 2);
-    background-color: transparent;
-}
-
-.wmde-markdown {
-    font-family: var(--font-family) !important;
 }
 
 // React grid system styles
