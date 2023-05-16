@@ -75,9 +75,9 @@ function SettingsFields({ userProfile, setUserProfile }) {
                     data={{
                         name: 'User Name',
                         value: userProfile.username || '',
-                        desc: `URL: http://localhost:3000/${userProfile.id || ''}/${
-                            userProfile.username || ''
-                        }`,
+                        desc: `URL: ${process.env.REACT_APP_CLIENT_BASE_URL}/${
+                            userProfile.id || ''
+                        }/${userProfile.username || ''}`,
                     }}
                     inputProps={{ placeholder: 'Thêm user name' }}
                     type="input"
