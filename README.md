@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# F8 User Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the F8 UI repository! This repository contains the source code for a web application that allows users to create, read, update, and delete blog posts based on the original website: https://fullstack.edu.vn/. It provides a platform for users to share their thoughts, ideas, and experiences mostly about information technology with a wide audience.
 
-## Available Scripts
+As have said, this is just a clone blog website built with the **purpose of studying**. Therefore, it isn't a great place for developers to get interact with others as there aren't many active users in the app.
 
-In the project directory, you can run:
+## Table of contents
 
-### `npm start`
+- [Features](#features)
+- [Technologies](#technologies)
+- [Deployments](#deployments)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Cloned F8 application offers the following features:
 
-### `npm test`
+1. **User Registration and Authentication**: Users can create an account, log in, and log out securely. This ensures that only authorized users can create and manage blog posts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Blog Post Management**: Authenticated users can create new blog posts, edit existing ones, delete unwanted posts and also react to others' posts. Each blog post can have a title, content, author information, and a timestamp.
 
-### `npm run build`
+3. **Responsive Design**: The web app is designed to be responsive, ensuring a seamless user experience across different devices and screen sizes, including desktops, tablets, and mobile phones. *But it isn't recommended to write blog in small devices.*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The F8 web app utilizes a combination of powerful technologies to deliver a robust and immersive user experience.
 
-### `npm run eject`
+- **React**: core technology used to build the user interface of the F8 web app.
+- **Redux**: employed for state management in the F8 web app.
+- **Firebase Authentication**: ensures secure and seamless user registration, login, and user management features.
+- **@tippyjs/react**: implement animated popups and modals.
+- **@uiw/react-md-editor**: enable the creation of a Markdown editor for composing new blog posts and also view posts.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployments
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Netlify**: is utilized to deploy the front-end application of the F8 web app.
+- **Render**: is employed to deploy the ExpressJS back-end application of the F8 web app.
+- **Clever Cloud**: is used to host the production MySQL database for the F8 web app.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+It's important to note that while these deployment services are *free*, there may be limitations in terms of performance, cache, and bandwidth. As a result, the application's speed and responsiveness may be affected, leading to occasional slowness. It's advisable to keep these limitations in mind when using the F8 web app and understand that the free tier of these services may have certain restrictions.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Last word
 
-## Learn More
+The creator of this app is still a student and this app also is built for just studying purpose, instead of any financial income. Therefore, this repository is public for web developers' community. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you see any performance solution or security problems related to this app, you can interact with me through [Facebook](https://www.facebook.com/ch.phuc2909/). Thanks for reading these words!
