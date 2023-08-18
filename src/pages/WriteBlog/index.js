@@ -86,6 +86,12 @@ function WriteBlogPage() {
         <div className={cx('wrapper')}>
             <Helmet>
                 <title>{config.titles.writeBlog}</title>
+                <meta name="description" content={config.descs.writeBlog} />
+                <link rel="canonical" href={window.location.href} />
+
+                <meta name="og:title" content={config.titles.writeBlog} />
+                <meta name="og:description" content={config.descs.writeBlog} />
+                <meta name="og:url" content={window.location.href} />
             </Helmet>
 
             {status !== 'loading' && (

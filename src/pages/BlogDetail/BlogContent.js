@@ -15,6 +15,12 @@ function BlogContent({ postDetails }) {
         <>
             <Helmet>
                 <title>{postDetails.title}</title>
+                <meta name="description" content={postDetails.meta_description} />
+                <link rel="canonical" href={window.location.href} />
+
+                <meta name="og:title" content={postDetails.title} />
+                <meta name="og:description" content={postDetails.meta_description} />
+                <meta name="og:url" content={window.location.href} />
             </Helmet>
 
             <h1 className={cx('heading')}>{postDetails.title}</h1>

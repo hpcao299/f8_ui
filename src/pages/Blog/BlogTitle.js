@@ -42,6 +42,12 @@ function BlogTitle() {
         <div className={cx('top')}>
             <Helmet>
                 <title>{renderTitle()}</title>
+                <meta name="description" content={renderDesc()} />
+                <link rel="canonical" href={window.location.href} />
+
+                <meta name="og:title" content={renderTitle()} />
+                <meta name="og:description" content={renderDesc()} />
+                <meta name="og:url" content={window.location.href} />
             </Helmet>
 
             <h1 className={cx('heading')}>{renderHeading()}</h1>

@@ -13,6 +13,7 @@ function NotFound() {
         <div className={cx('wrapper')}>
             <Helmet>
                 <title>Trang này không tồn tại</title>
+                <meta name="robots" content="noindex, nofollow" />
             </Helmet>
 
             <div className={cx('header')}>

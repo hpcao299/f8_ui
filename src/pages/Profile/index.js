@@ -13,6 +13,7 @@ import { momentFromNow } from '~/utils';
 import SocialLink from './components/SocialLink';
 import PostItem from './PostItem';
 import styles from './Profile.module.scss';
+import { Helmet } from 'react-helmet-async';
 
 const cx = classNames.bind(styles);
 
@@ -65,6 +66,16 @@ function ProfilePage() {
 
     return !isLoading ? (
         <Container style={{ padding: 0 }} className={cx('container', 'grid-container')}>
+            <Helmet>
+                <title>{user.full_name}</title>
+                <meta name="description" content={config.descs.profile} />
+                <link rel="canonical" href={window.location.href} />
+
+                <meta name="og:title" content={user.full_name} />
+                <meta name="og:description" content={config.descs.profile} />
+                <meta name="og:url" content={window.location.href} />
+            </Helmet>
+
             <div className={cx('cover')} style={{ backgroundImage: `url(${images.coverProfile})` }}>
                 <div className={cx('user')}>
                     <div className={cx('user-avatar')}>

@@ -29,6 +29,12 @@ function SigninPage() {
         >
             <Helmet>
                 <title>{config.titles.signin}</title>
+                <meta name="description" content={config.descs.signin} />
+                <link rel="canonical" href={window.location.href} />
+
+                <meta name="og:title" content={config.titles.signin} />
+                <meta name="og:description" content={config.descs.signin} />
+                <meta name="og:url" content={window.location.href} />
             </Helmet>
 
             <div className={cx('container')}>

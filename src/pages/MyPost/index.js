@@ -72,6 +72,12 @@ function MyPostPage() {
         <>
             <Helmet>
                 <title>{config.titles.myPost}</title>
+                <meta name="description" content={config.descs.myPost} />
+                <link rel="canonical" href={window.location.href} />
+
+                <meta name="og:title" content={config.titles.myPost} />
+                <meta name="og:description" content={config.descs.myPost} />
+                <meta name="og:url" content={window.location.href} />
             </Helmet>
             <div className={cx('top')}>
                 <h1 className={cx('heading')}>Bài viết của tôi</h1>

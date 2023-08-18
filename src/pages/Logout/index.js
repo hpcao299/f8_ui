@@ -17,6 +17,7 @@ function LogoutPage() {
         <div>
             <Helmet>
                 <title>{config.titles.logout}</title>
+                <meta name="robots" content="noindex, nofollow" />
             </Helmet>
         </div>
     );

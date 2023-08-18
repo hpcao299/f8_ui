@@ -26,6 +26,12 @@ function SettingPage() {
         <Container style={{ maxWidth: '1100px', padding: 0, flex: 1 }} className="grid-container">
             <Helmet>
                 <title>{config.titles.setting}</title>
+                <meta name="description" content={config.descs.setting} />
+                <link rel="canonical" href={window.location.href} />
+
+                <meta name="og:title" content={config.titles.setting} />
+                <meta name="og:description" content={config.descs.setting} />
+                <meta name="og:url" content={window.location.href} />
             </Helmet>
 
             <Row className={styles.row}>
