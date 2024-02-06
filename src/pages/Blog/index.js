@@ -2,41 +2,19 @@ import classNames from 'classnames/bind';
 import { Col, Container, Row } from 'react-grid-system';
 import MediaQuery from 'react-responsive';
 
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import useSWR from 'swr';
 import TopicsList from '~/components/TopicsList';
 import styles from './Blog.module.scss';
-import BlogsList from './BlogsList';
 import BlogTitle from './BlogTitle';
-
-import blogApi from '~/api/blogApi';
+import BlogsList from './BlogsList';
 
 const cx = classNames.bind(styles);
 
 function BlogPage() {
-    const [blogsList, setBlogsList] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const { topicId } = useParams();
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            let data;
-            setIsLoading(true);
-            try {
-                if (topicId) {
-                    data = await blogApi.getPostsTopics(topicId);
-                } else {
-                    data = await blogApi.getNewPosts();
-                }
-                setBlogsList(data.data);
-            } catch (error) {
-                console.error(error);
-            }
-            setIsLoading(false);
-        };
-
-        fetchPosts();
-    }, [topicId]);
+    const apiEndpoint = topicId ? `/blogs/topic/${topicId}` : '/blogs';
+    const { data, isLoading } = useSWR(apiEndpoint);
 
     return (
         <>
@@ -54,7 +32,7 @@ function BlogPage() {
                                 <>
                                     <Col xl={8} sm={12}>
                                         <div className={cx('leftLayout')}>
-                                            <BlogsList data={blogsList} />
+                                            <BlogsList data={data.data} />
                                         </div>
                                     </Col>
                                     <Col xl={4} sm={12}>

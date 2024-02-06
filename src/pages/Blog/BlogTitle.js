@@ -1,18 +1,19 @@
 import classNames from 'classnames/bind';
 import { memo } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import topicApi from '~/api/topicApi';
 import config from '~/config';
 import { content } from '~/constants';
-import { selectCurrentTopic } from '~/slices/topicSlice';
 import styles from './Blog.module.scss';
 
 const cx = classNames.bind(styles);
 
 function BlogTitle() {
+    const { data: topics } = topicApi.useTopics();
     const { topicId } = useParams();
-    const selectedTopic = useSelector(state => selectCurrentTopic(state, Number(topicId)));
+
+    const selectedTopic = topics?.data?.find(topic => topic.id === Number(topicId));
 
     const renderTitle = () => {
         if (selectedTopic) {

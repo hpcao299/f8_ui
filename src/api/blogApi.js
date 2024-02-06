@@ -1,3 +1,4 @@
+import useSWR from 'swr';
 import axiosClient from './axiosClient';
 
 const blogApi = {
@@ -28,13 +29,12 @@ const blogApi = {
     },
 
     // View blog apis
-    getNewPosts() {
-        const url = '/blogs';
-        return axiosClient.get(url);
+    useNewPosts() {
+        return useSWR('/blogs');
     },
-    getPostsTopics(topic_id) {
+    usePostsTopic(topic_id) {
         const url = `/blogs/topic/${topic_id}`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
     getPostDetails(id) {
         const url = `/blogs/details/${id}`;

@@ -11,25 +11,22 @@ import Select from '~/components/Select';
 import config from '~/config';
 import { messages } from '~/constants';
 import { addNotification } from '~/slices/notificationSlice';
-import { fetchTopics } from '~/slices/topicSlice';
 import { endApi, runApi, selectPostTopic, setTopicId } from '~/slices/writeBlogSlice';
 import MetaDetailsPreview from './MetaDetailsPreview';
 import styles from './PublishPreview.module.scss';
+import topicApi from '~/api/topicApi';
 
 const cx = classNames.bind(styles);
 
 function PublishPreview({ hideModal }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { topics } = useSelector(state => state.topic);
     const { status, meta_title, meta_description, topic_id, is_published } = useSelector(
         state => state.writeBlog,
     );
     const { blogId } = useParams();
-
-    useEffect(() => {
-        dispatch(fetchTopics());
-    }, [dispatch]);
+    const { data } = topicApi.useTopics();
+    const topics = data?.data || [];
 
     const handleSelectChange = useCallback(
         e => {
