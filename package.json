@@ -24,6 +24,7 @@
         "react-router-dom": "^6.3.0",
         "react-scripts": "5.0.1",
         "react-spring": "^9.4.5",
+        "swr": "^2.2.4",
         "use-debounce": "^8.0.2",
         "web-vitals": "^2.1.4"
     },

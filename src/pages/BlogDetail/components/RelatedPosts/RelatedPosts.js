@@ -1,7 +1,7 @@
 import MDEditor from '@uiw/react-md-editor';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { memo, useEffect, useState } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import blogApi from '~/api/blogApi';
 import Image from '~/components/Image';
@@ -11,20 +11,8 @@ import styles from './RelatedPosts.module.scss';
 const cx = classNames.bind(styles);
 
 function RelatedPosts({ blog_id }) {
-    const [postsList, setPostsList] = useState([]);
-
-    useEffect(() => {
-        const fetchRelatedPosts = async () => {
-            try {
-                const { data } = await blogApi.getRelatedPosts(blog_id);
-                setPostsList(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchRelatedPosts();
-    }, [blog_id]);
+    const { data } = blogApi.useRelatedPosts(blog_id);
+    const postsList = data?.data || [];
 
     return (
         <div className={cx('wrapper')}>

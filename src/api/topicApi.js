@@ -1,9 +1,9 @@
-import axiosClient from './axiosClient';
+import useSWRImmutable from 'swr/immutable';
 
 const topicApi = {
-    getTopics() {
+    useTopics() {
         const url = '/topics';
-        return axiosClient.get(url);
+        return useSWRImmutable(url);
     },
 };
 

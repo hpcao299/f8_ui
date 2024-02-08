@@ -7,6 +7,8 @@ import { privateRoutes, publicRoutes } from '~/routes';
 import Notifications from './components/Notifications';
 import NotFound from './pages/NotFound';
 import { AuthWatcher, renderRoutes, ScrollToTop } from './utils';
+import { SWRConfig } from 'swr';
+import config from './config';
 
 moment.locale('vi');
 
@@ -14,19 +16,21 @@ function App() {
     return (
         <HelmetProvider>
             <GlobalStyles>
-                <div className="app">
-                    <ScrollToTop />
-                    <AuthWatcher />
+                <SWRConfig value={config.swr.value}>
+                    <div className="app">
+                        <ScrollToTop />
+                        <AuthWatcher />
 
-                    <Routes>
-                        {renderRoutes(publicRoutes)}
-                        {renderRoutes(privateRoutes, { private: true })}
+                        <Routes>
+                            {renderRoutes(publicRoutes)}
+                            {renderRoutes(privateRoutes, { private: true })}
 
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </div>
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </div>
 
-                <Notifications />
+                    <Notifications />
+                </SWRConfig>
             </GlobalStyles>
         </HelmetProvider>
     );

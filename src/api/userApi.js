@@ -1,3 +1,4 @@
+import useSWR from 'swr';
 import axiosClient from './axiosClient';
 
 const userApi = {
@@ -5,9 +6,9 @@ const userApi = {
         const url = '/users/register';
         return axiosClient.post(url);
     },
-    getProfileDetails(user_id) {
+    useProfileDetails(user_id) {
         const url = `/users/${user_id}/profile`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
     getCurrentUser() {
         const url = `/users/current-user`;

@@ -1,3 +1,4 @@
+import useSWR from 'swr';
 import axiosClient from './axiosClient';
 
 const blogApi = {
@@ -28,28 +29,31 @@ const blogApi = {
     },
 
     // View blog apis
-    getNewPosts() {
-        const url = '/blogs';
-        return axiosClient.get(url);
+    useNewPosts() {
+        return useSWR('/blogs');
     },
-    getPostsTopics(topic_id) {
+    usePostsTopic(topic_id) {
         const url = `/blogs/topic/${topic_id}`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
-    getPostDetails(id) {
+    usePostDetails(id) {
         const url = `/blogs/details/${id}`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
-    getSameAuthorPosts(blog_id) {
+    useSameAuthorPosts(blog_id) {
         const url = `/blogs/${blog_id}/same-author`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
-    getRelatedPosts(blog_id) {
+    useRelatedPosts(blog_id) {
         const url = `/blogs/${blog_id}/related-posts`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
 
     // Reactions apis
+    getPostReaction(blog_id) {
+        const url = `/blogs/${blog_id}/reactions`;
+        return axiosClient.get(url);
+    },
     patchReactions(blog_id, data) {
         const url = `/blogs/${blog_id}/reactions`;
         return axiosClient.patch(url, data);

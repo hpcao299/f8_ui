@@ -1,23 +1,12 @@
 import PropTypes from 'prop-types';
-import { memo, useEffect, useState } from 'react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import blogApi from '~/api/blogApi';
 import styles from './SameAuthorPosts.module.scss';
+
 function SameAuthorPosts({ blog_id }) {
-    const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-        const fetchSameAuthorPosts = async () => {
-            try {
-                const { data } = await blogApi.getSameAuthorPosts(blog_id);
-                setPosts(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchSameAuthorPosts();
-    }, [blog_id]);
+    const { data } = blogApi.useSameAuthorPosts(blog_id);
+    const posts = data?.data || [];
 
     return (
         <div className={styles.wrapper}>
