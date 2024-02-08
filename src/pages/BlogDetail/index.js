@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-grid-system';
 import MediaQuery from 'react-responsive';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useEffect, useState } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import blogApi from '~/api/blogApi';
 import TopicsList from '~/components/TopicsList';
 import config from '~/config';
@@ -11,8 +11,9 @@ import MDContent from '../../components/MD/MDContent';
 import BlogContent from './BlogContent';
 import styles from './BlogDetail.module.scss';
 import Reaction from './components/Reaction';
-import RelatedPosts from './components/RelatedPosts';
-import SameAuthorPosts from './components/SameAuthorPosts';
+
+const RelatedPosts = lazy(() => import('./components/RelatedPosts'));
+const SameAuthorPosts = lazy(() => import('./components/SameAuthorPosts'));
 
 const cx = classNames.bind(styles);
 
@@ -87,8 +88,12 @@ function BlogDetail() {
                                     reactionDetails={reactionDetails}
                                     setReactionDetails={setReactionDetails}
                                 />
-                                <SameAuthorPosts blog_id={postDetails.id} />
-                                <RelatedPosts blog_id={postDetails.id} />
+                                <Suspense>
+                                    <SameAuthorPosts blog_id={postDetails.id} />
+                                </Suspense>
+                                <Suspense>
+                                    <RelatedPosts blog_id={postDetails.id} />
+                                </Suspense>
                                 <TopicsList />
                             </div>
                         </div>

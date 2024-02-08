@@ -40,13 +40,13 @@ const blogApi = {
         const url = `/blogs/details/${id}`;
         return useSWR(url);
     },
-    getSameAuthorPosts(blog_id) {
+    useSameAuthorPosts(blog_id) {
         const url = `/blogs/${blog_id}/same-author`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
-    getRelatedPosts(blog_id) {
+    useRelatedPosts(blog_id) {
         const url = `/blogs/${blog_id}/related-posts`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
 
     // Reactions apis
