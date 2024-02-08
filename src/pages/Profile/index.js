@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { Helmet } from 'react-helmet-async';
 import userApi from '~/api/userApi';
 import images from '~/assets/images';
 import Box from '~/components/Box';
@@ -10,36 +10,22 @@ import { UserGroupIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import config from '~/config';
 import { momentFromNow } from '~/utils';
-import SocialLink from './components/SocialLink';
 import PostItem from './PostItem';
 import styles from './Profile.module.scss';
-import { Helmet } from 'react-helmet-async';
+import SocialLink from './components/SocialLink';
 
 const cx = classNames.bind(styles);
 
 function ProfilePage() {
     const { id } = useParams();
-    const [postsList, setPostsList] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [user, setUser] = useState({});
+    const { data, isLoading, error } = userApi.useProfileDetails(id);
+    const postsList = data?.data.posts || [];
+    const user = data?.data.user || {};
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchProfilePosts = async () => {
-            setIsLoading(true);
-            try {
-                const { data } = await userApi.getProfileDetails(id);
-                setPostsList(data.posts);
-                setUser(data.user);
-            } catch (error) {
-                console.error(error);
-                navigate(config.routes.notFound);
-            }
-            setIsLoading(false);
-        };
+    if (error) navigate(config.routes.notFound);
 
-        fetchProfilePosts();
-    }, [id, navigate]);
+    if (isLoading) return null;
 
     const SOCIAL_LINK_LIST = [
         {
@@ -64,7 +50,7 @@ function ProfilePage() {
         },
     ];
 
-    return !isLoading ? (
+    return (
         <Container style={{ padding: 0 }} className={cx('container', 'grid-container')}>
             <Helmet>
                 <title>{user.full_name}</title>
@@ -119,7 +105,7 @@ function ProfilePage() {
                 </Container>
             </div>
         </Container>
-    ) : null;
+    );
 }
 
 export default ProfilePage;
