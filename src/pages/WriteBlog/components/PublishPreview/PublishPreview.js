@@ -1,11 +1,12 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import { memo, useCallback, useEffect, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { Col, Container, Row } from 'react-grid-system';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import blogApi from '~/api/blogApi';
+import topicApi from '~/api/topicApi';
 import Checkbox from '~/components/Checkbox';
 import Select from '~/components/Select';
 import config from '~/config';
@@ -14,7 +15,6 @@ import { addNotification } from '~/slices/notificationSlice';
 import { endApi, runApi, selectPostTopic, setTopicId } from '~/slices/writeBlogSlice';
 import MetaDetailsPreview from './MetaDetailsPreview';
 import styles from './PublishPreview.module.scss';
-import topicApi from '~/api/topicApi';
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +26,7 @@ function PublishPreview({ hideModal }) {
     );
     const { blogId } = useParams();
     const { data } = topicApi.useTopics();
-    const topics = data?.data || [];
+    const topics = useMemo(() => data?.data || [], [data]);
 
     const handleSelectChange = useCallback(
         e => {
