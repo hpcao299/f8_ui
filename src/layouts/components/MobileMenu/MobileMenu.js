@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
-import { FaBars, FaUser } from 'react-icons/fa';
+import { FaBars, FaUser, FaCog } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { HomeIcon, LightBulbIcon, LogoutIcon, NewspaperIcon, RoadIcon } from '~/components/Icons';
@@ -11,46 +11,50 @@ import styles from './MobileMenu.module.scss';
 
 const cx = classNames.bind(styles);
 
+const MOBILE_MENU_LINKS_LIST = [
+    {
+        title: 'Trang chủ',
+        to: config.routes.home,
+        icon: HomeIcon,
+    },
+    {
+        title: 'Lộ trình',
+        to: config.routes.learningPaths,
+        icon: RoadIcon,
+    },
+    {
+        title: 'Khoá học',
+        to: config.routes.courses,
+        icon: LightBulbIcon,
+    },
+    {
+        title: 'Blog',
+        to: config.routes.blog,
+        icon: NewspaperIcon,
+    },
+];
+
 function MobileMenu() {
     const [isShown, setIsShown] = useState(false);
     const { currentUser } = useSelector(state => state.auth);
     const menuBodyRef = useRef();
 
-    const MOBILE_MENU_LINK_LIST = [
-        [
-            {
-                to: `/${currentUser?.id}/${currentUser?.username}`,
-                title: 'Trang cá nhân',
-                icon: FaUser,
-            },
-            {
-                to: config.routes.myDraftsPost,
-                title: 'Bài viết của tôi',
-                icon: NewspaperIcon,
-            },
-        ],
-        [
-            {
-                title: 'Trang chủ',
-                to: config.routes.home,
-                icon: HomeIcon,
-            },
-            {
-                title: 'Lộ trình',
-                to: config.routes.learningPaths,
-                icon: RoadIcon,
-            },
-            {
-                title: 'Khoá học',
-                to: config.routes.courses,
-                icon: LightBulbIcon,
-            },
-            {
-                title: 'Blog',
-                to: config.routes.blog,
-                icon: NewspaperIcon,
-            },
-        ],
+    const LOGGED_IN_LINKS_LIST = [
+        {
+            to: `/${currentUser?.id}/${currentUser?.username}`,
+            title: 'Trang cá nhân',
+            icon: FaUser,
+        },
+        {
+            to: config.routes.myDraftsPost,
+            title: 'Bài viết của tôi',
+            icon: NewspaperIcon,
+        },
+        {
+            to: config.routes.settings,
+            title: 'Cài đặt',
+            icon: FaCog,
+        },
     ];
 
     useEffect(() => {
@@ -117,10 +121,9 @@ function MobileMenu() {
                                 </li>
                             </ul>
                         )}
-
-                        {MOBILE_MENU_LINK_LIST.map((list, index) => (
-                            <ul className={cx('list')} key={index}>
-                                {list.map((link, index) => {
+                        {currentUser && (
+                            <ul className={cx('list')}>
+                                {LOGGED_IN_LINKS_LIST.map((link, index) => {
                                     const Icon = link.icon;
 
                                     return (
@@ -141,7 +144,30 @@ function MobileMenu() {
                                     );
                                 })}
                             </ul>
-                        ))}
+                        )}
+
+                        <ul className={cx('list')}>
+                            {MOBILE_MENU_LINKS_LIST.map((link, index) => {
+                                const Icon = link.icon;
+
+                                return (
+                                    <li key={index}>
+                                        <NavLink
+                                            to={link.to}
+                                            className={({ isActive }) =>
+                                                isActive ? styles.active : ''
+                                            }
+                                            onClick={handleToggleModal}
+                                        >
+                                            <em>
+                                                <Icon />
+                                            </em>
+                                            {link.title}
+                                        </NavLink>
+                                    </li>
+                                );
+                            })}
+                        </ul>
                         {currentUser && (
                             <ul className={cx('list')}>
                                 <li>
