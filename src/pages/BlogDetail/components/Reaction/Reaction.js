@@ -9,7 +9,7 @@ import styles from './Reaction.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Reaction({ postDetails, setPostDetails }) {
+function Reaction({ postDetails, reactionDetails, setReactionDetails }) {
     const { currentUser } = useSelector(state => state.auth);
     const navigate = useNavigate();
 
@@ -18,11 +18,16 @@ function Reaction({ postDetails, setPostDetails }) {
             return navigate(config.routes.signin);
         }
 
-        const patchData = postDetails.is_reacted ? { is_reacted: false } : { is_reacted: true };
-        try {
-            const { data } = await blogApi.patchReactions(postDetails.id, patchData);
+        const newIsReacted = reactionDetails.is_reacted ? false : true;
+        const newReactionCount = reactionDetails.is_reacted
+            ? reactionDetails.reaction_counts - 1
+            : reactionDetails.reaction_counts + 1;
 
-            setPostDetails(data);
+        setReactionDetails(() => ({ is_reacted: newIsReacted, reaction_counts: newReactionCount }));
+
+        const patchData = reactionDetails.is_reacted ? { is_reacted: false } : { is_reacted: true };
+        try {
+            await blogApi.patchReactions(postDetails.id, patchData);
         } catch (error) {
             console.error(error);
         }
@@ -32,13 +37,13 @@ function Reaction({ postDetails, setPostDetails }) {
         <div className={cx('wrapper')}>
             <div
                 className={cx('btn', {
-                    active: postDetails.is_reacted,
+                    active: reactionDetails.is_reacted,
                 })}
                 title="Nhấn để thích bài này"
                 onClick={handleReactionClick}
             >
-                {postDetails.is_reacted ? <FaHeart /> : <FaRegHeart />}
-                <span>{postDetails.reaction_counts}</span>
+                {reactionDetails.is_reacted ? <FaHeart /> : <FaRegHeart />}
+                <span>{reactionDetails.reaction_counts}</span>
             </div>
             <div className={cx('btn', 'disabled')}>
                 <FaRegComment />
@@ -50,7 +55,8 @@ function Reaction({ postDetails, setPostDetails }) {
 
 Reaction.propTypes = {
     postDetails: PropTypes.object.isRequired,
-    setPostDetails: PropTypes.func.isRequired,
+    reactionDetails: PropTypes.object.isRequired,
+    setReactionDetails: PropTypes.func.isRequired,
 };
 
 export default Reaction;

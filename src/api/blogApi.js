@@ -36,9 +36,9 @@ const blogApi = {
         const url = `/blogs/topic/${topic_id}`;
         return useSWR(url);
     },
-    getPostDetails(id) {
+    usePostDetails(id) {
         const url = `/blogs/details/${id}`;
-        return axiosClient.get(url);
+        return useSWR(url);
     },
     getSameAuthorPosts(blog_id) {
         const url = `/blogs/${blog_id}/same-author`;
@@ -50,6 +50,10 @@ const blogApi = {
     },
 
     // Reactions apis
+    getPostReaction(blog_id) {
+        const url = `/blogs/${blog_id}/reactions`;
+        return axiosClient.get(url);
+    },
     patchReactions(blog_id, data) {
         const url = `/blogs/${blog_id}/reactions`;
         return axiosClient.patch(url, data);
