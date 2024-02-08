@@ -21,7 +21,7 @@ function BlogDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [reactionDetails, setReactionDetails] = useState({
-        reaction_counts: 0,
+        reaction_counts: null,
         is_reacted: false,
     });
     const { data, isLoading, error } = blogApi.usePostDetails(id);

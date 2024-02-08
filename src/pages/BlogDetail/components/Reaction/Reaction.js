@@ -43,7 +43,11 @@ function Reaction({ postDetails, reactionDetails, setReactionDetails }) {
                 onClick={handleReactionClick}
             >
                 {reactionDetails.is_reacted ? <FaHeart /> : <FaRegHeart />}
-                <span>{reactionDetails.reaction_counts}</span>
+                <span>
+                    {reactionDetails.reaction_counts
+                        ? reactionDetails.reaction_counts
+                        : postDetails.reaction_counts}
+                </span>
             </div>
             <div className={cx('btn', 'disabled')}>
                 <FaRegComment />
