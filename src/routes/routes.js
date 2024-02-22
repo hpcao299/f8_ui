@@ -12,12 +12,14 @@ import LearningPathPage from '~/pages/LearningPath';
 import LogoutPage from '~/pages/Logout';
 import MyPostPage from '~/pages/MyPost';
 import ProfilePage from '~/pages/Profile';
+import SearchPage from '~/pages/Search';
 import SettingPage from '~/pages/Setting';
 import SigninPage from '~/pages/Signin';
 import WriteBlogPage from '~/pages/WriteBlog';
 
 const publicRoutes = [
     { path: config.routes.home, component: HomePage },
+    { path: config.routes.search, component: SearchPage, props: { hideSearch: true } },
     { path: config.routes.learningPaths, component: LearningPathPage },
     { path: config.routes.courses, component: CoursePage },
 

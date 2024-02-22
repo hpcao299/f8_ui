@@ -1,5 +1,6 @@
 const routes = {
     home: '/',
+    search: '/search',
     learningPaths: '/learning-paths',
     courses: '/courses',
 

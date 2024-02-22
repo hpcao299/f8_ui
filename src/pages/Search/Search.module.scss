@@ -1,0 +1,32 @@
+.search-input {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    font-size: 2.8rem;
+    font-weight: 500;
+    margin: 50px 0;
+    transition: font-size 0.3s ease;
+
+    &.bigger {
+        font-size: 3.2rem;
+    }
+}
+
+.search-empty {
+    font-size: 4rem;
+}
+
+.blank {
+    color: #757575;
+    font-size: 1.4rem;
+    padding: 32px 0;
+}
+
+.container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+@media (min-width: 0) and (max-width: 1023px) {
+    .leftLayout {
+        padding: 0;
+    }
+}

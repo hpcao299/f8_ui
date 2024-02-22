@@ -9,6 +9,7 @@ const titles = {
 
     signin: 'Đăng nhập vào F8',
     logout: 'Đăng xuất ...',
+    search: 'Tìm kiếm | F8',
 
     shortTag: '| F8',
     longTag: '| F8 - Học lập trình để đi làm',
