@@ -10,8 +10,23 @@
     }
 }
 
+.search-empty {
+    font-size: 4rem;
+}
+
 .blank {
     color: #757575;
     font-size: 1.4rem;
     padding: 32px 0;
+}
+
+.container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+@media (min-width: 0) and (max-width: 1023px) {
+    .leftLayout {
+        padding: 0;
+    }
 }

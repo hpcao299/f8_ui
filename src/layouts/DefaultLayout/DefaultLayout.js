@@ -8,10 +8,10 @@ import styles from './DefaultLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-function DefaultLayout({ children }) {
+function DefaultLayout({ children, ...props }) {
     return (
         <>
-            <Header />
+            <Header {...props} />
             <Container>
                 <div className={cx('withSidebar')}>
                     <Sidebar />

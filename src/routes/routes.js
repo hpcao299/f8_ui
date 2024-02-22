@@ -19,7 +19,7 @@ import WriteBlogPage from '~/pages/WriteBlog';
 
 const publicRoutes = [
     { path: config.routes.home, component: HomePage },
-    { path: config.routes.search, component: SearchPage },
+    { path: config.routes.search, component: SearchPage, props: { hideSearch: true } },
     { path: config.routes.learningPaths, component: LearningPathPage },
     { path: config.routes.courses, component: CoursePage },
 
