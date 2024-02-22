@@ -48,6 +48,10 @@ const blogApi = {
         const url = `/blogs/${blog_id}/related-posts`;
         return useSWR(url);
     },
+    searchPosts(query, limit) {
+        const url = `/blogs/search?q=${query}${limit ? `&limit=${limit}` : ''}`;
+        return axiosClient.get(url);
+    },
 
     // Reactions apis
     getPostReaction(blog_id) {
